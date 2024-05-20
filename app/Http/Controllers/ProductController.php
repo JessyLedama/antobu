@@ -13,7 +13,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = ProductService::products();
+
+        return view('admin.product.index', compact('products'));
     }
 
     /**
@@ -36,7 +38,7 @@ class ProductController extends Controller
             'digital_asset' => ['file:zip', 'mimes:zip', ],
         ]);
 
-        $productDetails [
+        $productDetails = [
             'name' => $validated['name'],
             'price' => $validated['price'],
             'image' => $validated['image'],

@@ -12,7 +12,7 @@ class ProductService
     // get products
     public static function products()
     {
-        $products = Product::all();
+        $products = Product::with(['user'])->get();
 
         return $products;
     }
