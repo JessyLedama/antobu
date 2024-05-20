@@ -24,7 +24,7 @@ class ProductService
 
         $productDetails['slug'] = SlugService::make($slugData);
 
-        $productDetails['status_id'] = StatusService::draft();
+        $productDetails['status_id'] = StatusService::inactive();
 
         $product = Product::create($productDetails);
 
