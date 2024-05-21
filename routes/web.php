@@ -11,9 +11,7 @@ Route::get('search', function () {
     // return view('welcome');
 })->name('search');
 
-Route::get('product', function () {
-    return view('product');
-})->name('product.show');
+Route::get('product/{slug}', [PagesController::class, 'showProduct'])->name('product.show');
 
 Route::middleware(['auth'])->group(function(){
 

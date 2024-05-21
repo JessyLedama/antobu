@@ -45,4 +45,12 @@ class ProductService
 
         return $product;
     }
+
+    // search product by slug
+    public static function searchBySlug($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        return $product;
+    }
 }

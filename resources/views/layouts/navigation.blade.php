@@ -76,7 +76,7 @@
 </div>
 
     
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             Top navbar
@@ -111,7 +111,7 @@
                 @csrf
                 <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 
-                <button class="btn btn-outline-success" type="submit">
+                <button class="btn btn-secondary" type="submit">
                     Search
                 </button>
             </form>
