@@ -38,19 +38,12 @@ class ProductController extends Controller
             'digital_asset' => ['file:zip', 'mimes:zip', ],
         ]);
 
-        $productDetails = [
-            'name' => $validated['name'],
-            'price' => $validated['price'],
-            'image' => $validated['image'],
-            'digital_asset' => $validated['digital_asset'],
-        ];
-
         if(Auth::check())
         {
-            $productDetails['user_id'] = Auth::id();
+            $validated['user_id'] = Auth::id();
         }
 
-        $product = ProductService::store($productDetails);
+        $product = ProductService::store($validated);
 
         session()->alert('success', 'Your product has been stored.');
 

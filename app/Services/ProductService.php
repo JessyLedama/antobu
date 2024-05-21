@@ -18,13 +18,28 @@ class ProductService
     }
 
     // store product
-    public static function store($productDetails)
+    public static function store($validated)
     {
-        $slugData = $productDetails['name'];
+        $slugData = $validated['name'];
 
-        $productDetails['slug'] = SlugService::make($slugData);
+        $slug = SlugService::make($slugData);
 
-        $productDetails['status_id'] = StatusService::inactive();
+        $image = $validated['image']->store('digitalAssetImages', ['disk' => 'public']);
+
+        $digitalAsset = $validated['digital_asset']->store('digitalAssets', ['disk' => 'public']);
+
+        $status = StatusService::inactive();
+
+        $productDetails = [
+            'name' => $validated['name'],
+            'slug' => $slug,
+            'price' => $validated['price'],
+            'image' => $image,
+            'digital_asset' => $digitalAsset,
+            'user_id' => $validated['user_id'],
+            'status_id' => $status->id,
+
+        ];
 
         $product = Product::create($productDetails);
 
