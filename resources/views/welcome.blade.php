@@ -8,9 +8,9 @@
         <!-- CAROUSEL -->
         <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                @foreach($slides as $index => $slide)
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}" aria-current="true" aria-label="{{ ucfirst($slide->name) }}"></button>
+                @endforeach
             </div>
             
             <div class="carousel-inner">
@@ -62,16 +62,6 @@
                     <a href="{{ route('product.show', $product->slug) }}">
                         <div class="col">
                             <div class="card shadow-sm">
-                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    
-
-                                    <rect width="100%" height="100%" fill="#55595c"/>
-
-                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                                        Thumbnail
-                                    </text>
-                                </svg> -->
-
                                 <img src="{{ asset('/storage/'.$product->image) }}" alt="" width="100%" height="225">
 
                                 <div class="card-body">
@@ -93,10 +83,6 @@
                                             <button type="button" class="btn btn-sm btn-outline-secondary">
                                                 Add to Cart
                                             </button>
-                                            
-                                            <!-- <button type="button" class="btn btn-sm btn-outline-secondary">
-                                                Edit
-                                            </button> -->
                                         </div>
                                     </div>
                                 </div>
