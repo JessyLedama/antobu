@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
 
         if($products->isEmpty())
         {
-            // digital asset images
+            // digital assets datas
             $digitalAssetDatas = [
                 [
                     'name' => 'HP Laptop',

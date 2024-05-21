@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SlideshowController;
 
 Route::get('/', [PagesController::class, 'home']);
 
@@ -31,6 +32,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     Route::prefix('orders')->group(function(){
 
         Route::get('/', [OrderController::class, 'index'])->name('admin.order.index');
+    });
+
+    Route::prefix('slides')->group(function(){
+
+        Route::get('/', [SlideshowController::class, 'index'])->name('admin.slide.index');
+
+        Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
+
+        Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
     });
 });
 
