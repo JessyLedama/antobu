@@ -1,0 +1,38 @@
+<div>
+    
+    <div class="cart-contents">
+        @foreach($cart as $item)
+            <div class="row">
+                <div class="col-md-4">
+                    <span>
+                        <img class="asset-image" src="{{ asset('storage/'.$item['image']) }}" alt="">
+                    </span>
+                </div>
+
+                <div class="col-md-7">
+                    <span class="asset-name"> 
+                        {{ $item['name'] }} 
+                    </span> <br/>
+
+                    <span class="asset-price"> 
+                        Price: {{ $item['price'] }} 
+                    </span> <br>
+                    
+                    <livewire:cart-counter :productId="$item['id']" :key="$item['id']">
+                </div>
+            </div>
+        @endforeach
+
+        <div class="row">
+            <div class="col-md-5 offset-4">
+                <strong class="cart-total">
+                    Total
+
+                    <span class="asset-price"> 
+                        Ksh. {{ $cartCount }} 
+                    </span> <br>
+                </strong>
+            </div>
+        </div>
+    </div>
+</div>

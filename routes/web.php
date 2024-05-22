@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SlideshowController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [PagesController::class, 'home']);
 
@@ -13,7 +14,12 @@ Route::get('search', function () {
 
 Route::get('product/{slug}', [PagesController::class, 'showProduct'])->name('product.show');
 
+Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+
+Route::get('cart', [CartController::class, 'cart'])->name('cart');
+
 Route::middleware(['auth'])->group(function(){
+    Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
 
     Route::view('profile', 'profile')->name('profile');
 });

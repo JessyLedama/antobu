@@ -1,3 +1,7 @@
+@php 
+    $cartCount = \App\Services\CartService::getCartCount();
+@endphp
+
 <!-- navigation styles -->
 <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
 
@@ -107,6 +111,15 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav me-auto mb-2 mb-md-0>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart') }}">
+                        <i class="bi bi-cart"></i>
+                        <livewire:cart-count>
+                    </a>
+                </li>
+            </ul>
+
             <form method="post" action="{{ route('search') }}" class="d-flex" role="search">
                 @csrf
                 <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -119,3 +132,11 @@
     </div>
 </nav>
 <!-- navigation ends -->
+
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('cartUpdated', function () {
+            Livewire.emit('refreshCartCount');
+        });
+    });
+</script>
