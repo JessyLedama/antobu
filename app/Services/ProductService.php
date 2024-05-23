@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Product;
-use App\Models\DigitalAsset;
 use App\Services\SlugService;
 use App\Services\StatusService;
 
@@ -50,6 +49,14 @@ class ProductService
     public static function searchBySlug($slug)
     {
         $product = Product::where('slug', $slug)->first();
+
+        return $product;
+    }
+
+    // search product by id
+    public static function searchById($id)
+    {
+        $product = Product::where('id', $id)->first();
 
         return $product;
     }

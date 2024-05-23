@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\CartService;
-use App\Services\DigitalAssetService;
+use App\Services\ProductService;
 
 class CartController extends Controller
 {
@@ -19,7 +19,7 @@ class CartController extends Controller
     // add to cart
     public function addToCart($slug)
     {
-        $product = DigitalAssetService::searchBySlug($slug);
+        $product = ProductService::searchBySlug($slug);
 
         CartService::addToCart($product);
 

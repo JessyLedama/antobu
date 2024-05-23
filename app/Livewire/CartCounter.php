@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Services\CartService;
-use App\Services\DigitalAssetService;
+use App\Services\ProductService;
 
 class CartCounter extends Component
 {
@@ -23,7 +23,7 @@ class CartCounter extends Component
     {
         $this->productId = $productId;
 
-        $this->asset = DigitalAssetService::searchById($this->productId);
+        $this->asset = ProductService::searchById($this->productId);
 
         $this->subtotal = $this->asset->price;
     }

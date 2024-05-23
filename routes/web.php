@@ -14,7 +14,7 @@ Route::get('search', function () {
 
 Route::get('product/{slug}', [PagesController::class, 'showProduct'])->name('product.show');
 
-Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+Route::get('add-to-cart/{slug}', [CartController::class, 'addToCart'])->name('addToCart');
 
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 

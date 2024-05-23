@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Services\CartService;
-use App\Services\DigitalAssetService;
+use App\Services\ProductService;
 use App\Livewire\CartCount;
 
 class AddToCart extends Component
@@ -19,7 +19,7 @@ class AddToCart extends Component
     // add to cart
     public function addToCart($id, CartCount $cartCount)
     {
-        $product = DigitalAssetService::searchById($id);
+        $product = ProductService::searchById($id);
 
         $cart = CartService::addToCart($product);
 

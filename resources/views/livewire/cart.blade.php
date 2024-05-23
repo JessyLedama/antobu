@@ -2,25 +2,27 @@
     
     <div class="cart-contents">
         @foreach($cart as $item)
-            <div class="row">
-                <div class="col-md-4">
-                    <span>
-                        <img class="asset-image" src="{{ asset('storage/'.$item['image']) }}" alt="">
-                    </span>
-                </div>
+            @if(is_array($item))
+                <div class="row">
+                    <div class="col-md-4">
+                        <span>
+                            <img class="asset-image" src="{{ asset('storage/'.$item['image']) }}" alt="">
+                        </span>
+                    </div>
 
-                <div class="col-md-7">
-                    <span class="asset-name"> 
-                        {{ $item['name'] }} 
-                    </span> <br/>
+                    <div class="col-md-7">
+                        <span class="asset-name"> 
+                            {{ $item['name'] }} 
+                        </span> <br/>
 
-                    <span class="asset-price"> 
-                        Price: {{ $item['price'] }} 
-                    </span> <br>
-                    
-                    <livewire:cart-counter :productId="$item['id']" :key="$item['id']">
+                        <span class="asset-price"> 
+                            Price: {{ $item['price'] }} 
+                        </span> <br>
+                        
+                        <livewire:cart-counter :productId="$item['id']" :key="$item['id']">
+                    </div>
                 </div>
-            </div>
+            @endif
         @endforeach
 
         <div class="row">
@@ -29,7 +31,7 @@
                     Total
 
                     <span class="asset-price"> 
-                        Ksh. {{ $cartCount }} 
+                        Ksh. {{ $cart['total'] }} 
                     </span> <br>
                 </strong>
             </div>

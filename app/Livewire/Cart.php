@@ -44,7 +44,7 @@ class Cart extends Component
     // get total
     public function getTotal()
     {
-        // 
+        $this->total = CartService::total();
     }
 
     // increment
