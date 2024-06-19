@@ -40,7 +40,7 @@ use App\Services\CartService;
                                 </th>
                                 
                                 <th class="text-right py-3 px-4" style="width: 100px;">
-                                   Sub Total
+                                   Sub Total (KSH)
                                 </th>
                                 
                                 <th class="text-center align-middle py-3 px-0" style="width: 40px;">
@@ -56,32 +56,38 @@ use App\Services\CartService;
                         </tbody>
                     </table>
                     
-                    <div class="row">
-                        <div class="col-md-5 offset-4">
-                            <strong class="cart-total">
-                                Total
-
-                                <span class="asset-price"> 
-                                    <!-- Ksh. {{ $cart['total'] }}  -->
-                                </span> <br>
-                            </strong>
-                        </div>
-                    </div>
-
                     <!-- Promo code -->
                     <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
                         <div class="mt-4">
-                            <label class="text-muted font-weight-normal">Promocode</label>
+                            <label class="text-muted font-weight-normal">
+                                Promo Code
+                            </label>
                             <input type="text" placeholder="ABC" class="form-control">
                         </div>
+
                         <div class="d-flex">
                             <div class="text-right mt-4 mr-5">
-                            <label class="text-muted font-weight-normal m-0">Discount</label>
-                            <div class="text-large"><strong>$20</strong></div>
+                                <label class="text-muted font-weight-normal m-0">
+                                    Discount
+                                </label>
+                                
+                                <div class="text-large">
+                                    <strong>
+                                        $20
+                                    </strong>
+                                </div>
                             </div>
+
                             <div class="text-right mt-4">
-                            <label class="text-muted font-weight-normal m-0">Total price</label>
-                            <div class="text-large"><strong>$1164.65</strong></div>
+                                <label class="text-muted font-weight-normal m-0">
+                                    Total price
+                                </label>
+                                
+                                <div class="text-large">
+                                    <strong>
+                                        KSh. {{ $cart['total'] }}
+                                    </strong>
+                                </div>
                             </div>
                         </div>
                     </div>

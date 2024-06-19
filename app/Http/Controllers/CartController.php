@@ -47,7 +47,8 @@ class CartController extends Controller
     // cart page
     public function cart()
     {
-        $cart = session('cart');
+        // $cart = session('cart');
+        $cart = CartService::getCart();
 
         return view('cart', compact('cart'));
     }

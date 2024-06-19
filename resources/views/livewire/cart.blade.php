@@ -30,7 +30,7 @@
                     </td>
                     
                     <td class="text-right font-weight-semibold align-middle p-4">
-                        $115.1
+                        {{ number_format($item['price'] * $item['quantity']), 2}}
                     </td>
                     
                     <td class="text-center align-middle px-0">
@@ -39,18 +39,6 @@
                         </a>
                     </td>
                 </tr>
-
-                <div class="row">
-                    <div class="col-md-5 offset-4">
-                        <strong class="cart-total">
-                            Total
-
-                            <span class="asset-price"> 
-                                Ksh. {{ $cart['total'] }} 
-                            </span> <br>
-                        </strong>
-                    </div>
-                </div>
             @endif
         @endforeach
     </div>    
