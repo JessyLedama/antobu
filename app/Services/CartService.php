@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Services\DigitalAssetService;
 
-class CartService {
-
+class CartService 
+{
     public function __construct()
     {
         if(!session()->has('cart'))

@@ -23,9 +23,12 @@ use App\Services\CartService;
                     <table class="table table-bordered m-0">
                         <thead>
                             <tr>
-                                <!-- Set columns width -->
-                                <th class="text-center py-3 px-4" style="min-width: 400px;">
-                                    Product Name &amp; Details
+                                <th class="text-center py-3 px-4" style="min-width: 100px;">
+                                    Product Image
+                                </th>
+                                
+                                <th class="text-center py-3 px-4" style="min-width: 200px;">
+                                    Product Name
                                 </th>
                                 
                                 <th class="text-right py-3 px-4" style="width: 100px;">
@@ -37,7 +40,7 @@ use App\Services\CartService;
                                 </th>
                                 
                                 <th class="text-right py-3 px-4" style="width: 100px;">
-                                    Total
+                                   Sub Total
                                 </th>
                                 
                                 <th class="text-center align-middle py-3 px-0" style="width: 40px;">
@@ -52,7 +55,20 @@ use App\Services\CartService;
                             <livewire:cart>
                         </tbody>
                     </table>
+                    
+                    <div class="row">
+                        <div class="col-md-5 offset-4">
+                            <strong class="cart-total">
+                                Total
 
+                                <span class="asset-price"> 
+                                    <!-- Ksh. {{ $cart['total'] }}  -->
+                                </span> <br>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!-- Promo code -->
                     <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
                         <div class="mt-4">
                             <label class="text-muted font-weight-normal">Promocode</label>

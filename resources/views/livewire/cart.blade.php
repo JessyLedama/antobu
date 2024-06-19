@@ -3,35 +3,21 @@
         @foreach($cart as $item)
             @if(is_array($item))
                 <tr>
+                    <td>
+                        <img src="{{ asset('storage/'.$item['image']) }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                    </td>
                     <td class="p-4">
                         <div class="media align-items-center">
-                            <img src="{{ asset('storage/'.$item['image']) }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                             
-                            <div class="media-body">
-                                <a href="#" class="d-block text-dark">
-                                    {{ $item['name'] }} 
-                                </a>
+                            
+                            
+                            <a href="#" class="d-block text-dark">
+                                {{ $item['name'] }} 
+                            </a>
 
-                                <small>
-                                    <span class="text-muted">
-                                        Color:
-                                    </span>
-                                    
-                                    <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
-                                    
-                                    <span class="text-muted">
-                                        Size: 
-                                    </span> 
-                                    
-                                    EU 37 &nbsp;
-                                    
-                                    <span class="text-muted">
-                                        Ships from: 
-                                    </span> 
-                                    
-                                    China
-                                </small>
-                            </div>
+                            <!-- <span>
+                                {{ $item['name'] }}
+                            </span> -->
                         </div>
                     </td>
 
@@ -53,19 +39,19 @@
                         </a>
                     </td>
                 </tr>
+
+                <div class="row">
+                    <div class="col-md-5 offset-4">
+                        <strong class="cart-total">
+                            Total
+
+                            <span class="asset-price"> 
+                                Ksh. {{ $cart['total'] }} 
+                            </span> <br>
+                        </strong>
+                    </div>
+                </div>
             @endif
         @endforeach
-
-        <div class="row">
-            <div class="col-md-5 offset-4">
-                <strong class="cart-total">
-                    Total
-
-                    <span class="asset-price"> 
-                        Ksh. {{ $cart['total'] }} 
-                    </span> <br>
-                </strong>
-            </div>
-        </div>
-    </div>
+    </div>    
 </div>
