@@ -73,3 +73,16 @@
   font-size: 35px;
   margin: 5rem 0 0 0;
 }
+
+.float-right{
+  float: right;
+}
+
+.card-body a h5{
+  text-decoration: none;
+}
+
+.chart{
+  max-width: 25% !important;
+  max-height: 300px !important;
+}

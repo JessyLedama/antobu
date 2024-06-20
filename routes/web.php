@@ -8,6 +8,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -31,7 +32,7 @@ Route::middleware(['auth'])->group(function(){
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // PRODUCTS
     Route::prefix('products')->group(function(){
