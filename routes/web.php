@@ -46,6 +46,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('edit', [ProductController::class, 'edit'])->name('admin.product.edit');
 
         Route::post('update', [ProductController::class, 'update'])->name('admin.product.update');
+
+        Route::get('xlsx', [ProductController::class, 'xlsx'])->name('admin.product.export');
+
+        Route::get('csv', [ProductController::class, 'csv'])->name('admin.product.export');
     });
 
     // PRODUCT CATEGORIES

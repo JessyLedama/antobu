@@ -6,6 +6,8 @@ use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Auth;
 use App\Services\ProductCategoryService;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 class ProductController extends Controller
 {
@@ -84,5 +86,25 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    /**
+     * Export products in xlsx
+     */
+    public function xlsx()
+    {
+        $file = Excel::download(new ProductsExport, 'products.xlsx');
+
+        return $file;
+    }
+
+    /**
+     * Export products in csv
+     */
+    public function csv(Request $request)
+    {
+        $file = Excel::download(new ProductsExport, 'products.csv');
+
+        return $file;
     }
 }
