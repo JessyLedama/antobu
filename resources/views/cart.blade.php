@@ -66,7 +66,7 @@ use App\Services\CartService;
                         </div>
 
                         <div class="d-flex">
-                            <div class="text-right mt-4 mr-5">
+                            <!-- <div class="text-right mt-4 mr-5">
                                 <label class="text-muted font-weight-normal m-0">
                                     Discount
                                 </label>
@@ -76,11 +76,11 @@ use App\Services\CartService;
                                         $20
                                     </strong>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="text-right mt-4">
                                 <label class="text-muted font-weight-normal m-0">
-                                    Total price
+                                    Order Total
                                 </label>
                                 
                                 <div class="text-large">

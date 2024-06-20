@@ -9,15 +9,9 @@
                     <td class="p-4">
                         <div class="media align-items-center">
                             
-                            
-                            
                             <a href="#" class="d-block text-dark">
                                 {{ $item['name'] }} 
                             </a>
-
-                            <!-- <span>
-                                {{ $item['name'] }}
-                            </span> -->
                         </div>
                     </td>
 

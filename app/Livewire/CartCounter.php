@@ -18,6 +18,7 @@ class CartCounter extends Component
 
     public $asset;
 
+    public $quantity;
     
     public function mount($productId)
     {
@@ -26,6 +27,8 @@ class CartCounter extends Component
         $this->asset = ProductService::searchById($this->productId);
 
         $this->subtotal = $this->asset->price;
+
+        $this->quantity = session()->get("cart.$productId.quantity", 1);
     }
 
     // increment
@@ -34,6 +37,8 @@ class CartCounter extends Component
         $this->count++;
 
         $this->getSubtotal();
+
+        $this->updateCart();
     }
 
     // decrement
@@ -44,7 +49,19 @@ class CartCounter extends Component
             $this->count--;
 
             $this->getSubtotal();
+
+            $this->updateCart();
         }
+    }
+
+    // update cart
+    protected function updateCart()
+    {
+        // update the cart in the session
+        session()->put("cart.$this->productId.quantity", $this->quantity);
+
+        // emit an event to notify the parent component
+        $this->emit('quantityUpdated', $this->productId, $this->quantity);
     }
 
     // get subtotal

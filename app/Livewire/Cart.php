@@ -13,6 +13,8 @@ class Cart extends Component
     public $total;
     public $count = 1;
 
+    protected $listeners = ['quantityUpdated' => 'updateCart'];
+
     public function mount()
     {
         $this->getCart();
@@ -64,6 +66,19 @@ class Cart extends Component
 
             $this->subtotal = $this->count;
         }
+    }
+
+    // update cart
+    public function updateCart($productId, $quantity)
+    {
+        // update the item in the array with a new quantity.
+        $this->cart['productId']['quantity'] = $quantity;
+
+        // save updated cart back to session
+        session()->put('cart', $this->cart);
+
+        // recalculate cart total
+        CartService::getTotal();
     }
 
     public function render()

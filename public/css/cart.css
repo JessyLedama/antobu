@@ -22,3 +22,7 @@ body{
     box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
     vertical-align: middle;
 }
+
+.float-right{
+    float: right;
+}
