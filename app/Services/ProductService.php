@@ -24,7 +24,7 @@ class ProductService
 
         $slug = SlugService::make($slugData);
 
-        $image = $validated['image']->store('digitalAssetImages', ['disk' => 'public']);
+        $image = $validated['image']->store('productImages', ['disk' => 'public']);
 
         $digitalAsset = $validated['digital_asset']->store('digitalAssets', ['disk' => 'public']);
 
@@ -38,7 +38,7 @@ class ProductService
             'digital_asset' => $digitalAsset,
             'user_id' => $validated['user_id'],
             'status_id' => $status->id,
-
+            'product_category_id' => $validated['product_category_id'],
         ];
 
         $product = Product::create($productDetails);

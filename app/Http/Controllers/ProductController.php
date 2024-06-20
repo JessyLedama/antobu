@@ -39,6 +39,7 @@ class ProductController extends Controller
             'price' => ['required', 'string', 'max:12'],
             'image' => ['image', 'mimes:jpg,png,jpeg,gif'],
             'digital_asset' => ['file:zip', 'mimes:zip', ],
+            'product_category_id' => ['required', 'int'],
         ]);
 
         if(Auth::check())
@@ -48,7 +49,7 @@ class ProductController extends Controller
 
         $product = ProductService::store($validated);
 
-        session()->alert('success', 'Your product has been stored.');
+        session()->flash('success', 'Your product has been stored.');
 
         return redirect()->route('admin.product.index');
     }
