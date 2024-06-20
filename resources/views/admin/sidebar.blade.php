@@ -86,6 +86,15 @@
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="{{ route('admin.productCategory.index') }}" class="nav-link d-flex align-items-center gap-2">
+                <svg class="bi">
+                    <use xlink:href="#list"/>
+                </svg>
+                Product Categories
+              </a>
+            </li>
+
             <!-- <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="#">
                 <svg class="bi"><use xlink:href="#people"/></svg>

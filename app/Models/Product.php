@@ -22,11 +22,18 @@ class Product extends Model
         'digital_asset',
         'user_id',
         'status_id',
+        'product_category_id',
     ];
 
     // product belongsTo user
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    // product belongsTo() category
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 }

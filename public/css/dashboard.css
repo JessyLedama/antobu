@@ -46,3 +46,24 @@
 .navbar .form-control {
   padding: .75rem 1rem;
 }
+
+.new-btn{
+  background-color: #2470dc;
+  padding: .5rem 0.5rem 0.5rem 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+}
+
+.dash-table{
+  margin-top: 1rem;
+}
+
+.product-img{
+  max-width: 5rem;
+}
+
+.btn-container{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

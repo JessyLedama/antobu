@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Auth;
+use App\Services\ProductCategoryService;
 
 class ProductController extends Controller
 {
@@ -23,7 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = ProductCategoryService::categories();
+
+        return view('admin.product.create', compact('categories'));
     }
 
     /**

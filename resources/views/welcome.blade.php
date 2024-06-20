@@ -57,7 +57,7 @@
         <!-- PRODUCTS -->
         <div class="album py-5 bg-body-tertiary">
             <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                     @foreach($products as $product)
                     <a href="{{ route('product.show', $product->slug) }}">
                         <div class="col">
@@ -70,13 +70,13 @@
                                         {{ ucwords($product->name) }}
                                     </h3>
 
-                                    <p class="card-text">
+                                    <!-- <p class="card-text">
                                         This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                    </p>
+                                    </p> -->
                                     
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-body-secondary">
-                                            {{ $product->price }}
+                                            KSh. {{ $product->price }}
                                         </small>
 
                                         <div class="btn-group">

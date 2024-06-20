@@ -5,13 +5,14 @@ namespace App\Services;
 use App\Models\Product;
 use App\Services\SlugService;
 use App\Services\StatusService;
+use App\Models\ProductCategory;
 
 class ProductService
 {
     // get products
     public static function products()
     {
-        $products = Product::with(['user'])->get();
+        $products = Product::with(['user', 'category'])->get();
 
         return $products;
     }
@@ -59,5 +60,18 @@ class ProductService
         $product = Product::where('id', $id)->first();
 
         return $product;
+    }
+
+    // search for a category. 
+    // this method is to be used with search input
+    public static function search($validated)
+    {
+        $search = $validated['name'];
+
+        $category = Product::where('name', 'LIKE', "%$search%")
+                                    ->with(['category'])
+                                    ->first();
+
+        return $category;
     }
 }
