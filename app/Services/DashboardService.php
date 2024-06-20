@@ -30,8 +30,16 @@ class DashboardService
     // get orders chart
     public static function ordersChart()
     {
-        $orders = Product::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))->groupBy('date')->orderBy('date', 'ASC')->get();
+        $orders = Order::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))->groupBy('date')->orderBy('date', 'ASC')->get();
 
         return $orders;
+    }
+
+    // get products chart
+    public static function productsChart()
+    {
+        $product = Product::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))->groupBy('date')->orderBy('date', 'ASC')->get();
+
+        return $product;
     }
 }

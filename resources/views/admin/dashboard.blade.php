@@ -100,6 +100,7 @@
 
           <canvas class="chart" id="ordersChart"></canvas>
 
+          <canvas class="chart" id="productsChart"></canvas>
         </div>
     </div>
 </main>
@@ -109,15 +110,46 @@
 <script>
   const ctx = document.getElementById('ordersChart');
 
-  const ordersChartData = @json($ordersChart);
+  const ordersChartDatas = @json($ordersChart);
+  const ordersChartData = JSON.parse(ordersChartDatas);
+  const labels = ordersChartData.labels;
+  const data = ordersChartData.data;
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ordersChartData.labels,
+      labels: labels,
       datasets: [{
         label: '# of Orders',
-        data: ordersChartData.data,
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  const ctv = document.getElementById('productsChart');
+
+  const productsChartDatas = @json($productsChart);
+  const productsChartData = JSON.parse(productsChartDatas);
+  const label = productsChartData.labels;
+  const datas = productsChartData.data;
+
+  new Chart(ctv, {
+    type: 'line',
+    data: {
+      labels: label,
+      datasets: [{
+        label: '# of Products',
+        data: datas,
         borderWidth: 1
       }]
     },
