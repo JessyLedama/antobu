@@ -7,6 +7,7 @@ use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -24,6 +25,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
 
     Route::view('profile', 'profile')->name('profile');
+
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){

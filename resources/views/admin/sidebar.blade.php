@@ -164,10 +164,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#door-closed"/></svg>
-                Sign out
-              </a>
+              <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button class="nav-link d-flex align-items-center gap-2">
+                  <svg class="bi"><use xlink:href="#door-closed"/></svg>
+                    Sign out
+                  </button>
+              </form>
             </li>
           </ul>
         </div>
