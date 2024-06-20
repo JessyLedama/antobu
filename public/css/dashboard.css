@@ -67,3 +67,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.no-orders{
+  text-align: center;
+  font-size: 35px;
+  margin: 5rem 0 0 0;
+}

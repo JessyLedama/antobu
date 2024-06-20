@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OderService;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 
-class OderController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $orders = 
+        $orders = OrderService::orders();
+
+        return view('admin.order.index', compact('orders'));
     }
 
     /**

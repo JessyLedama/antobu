@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SlideshowController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
