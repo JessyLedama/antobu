@@ -91,6 +91,10 @@
         @endforeach
       </tbody>
     </table>
+
+    <span class="pagination">
+      {{ $products->links() }}
+    </span>
   </div>
 </main>
 @endsection

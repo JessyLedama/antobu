@@ -12,7 +12,7 @@ class ProductService
     // get products
     public static function products()
     {
-        $products = Product::with(['user', 'category'])->get();
+        $products = Product::with(['user', 'category'])->paginate(5);
 
         return $products;
     }

@@ -86,3 +86,7 @@
   max-width: 25% !important;
   max-height: 300px !important;
 }
+
+.w-5{
+  max-height: 40px;
+}
