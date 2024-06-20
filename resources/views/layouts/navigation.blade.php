@@ -80,7 +80,7 @@
 </div>
 
     
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('home') }}">
             Company Name

@@ -18,4 +18,12 @@ class Status extends Model
         'name',
         'slug',
     ];
+
+    /**
+     *  A status hasMany() companies
+     */
+    public function companies()
+    {
+        return $this->hasMany(CompanyDetail::class);
+    }
 }

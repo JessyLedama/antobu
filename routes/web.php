@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CompanyDetailController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -79,6 +80,23 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
 
         Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
+    });
+
+    // SETTINGS
+    Route::prefix('settings')->group(function(){
+
+        // Company Details
+        Route::prefix('company')->group(function(){
+            Route::get('', [CompanyDetailController::class, 'index'])->name('admin.company.index');
+            
+            Route::get('create', [CompanyDetailController::class, 'create'])->name('admin.company.create');
+            
+            Route::post('store', [CompanyDetailController::class, 'store'])->name('admin.company.store');
+            
+            Route::get('edit', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
+            
+            Route::post('update', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+        });
     });
 });
 

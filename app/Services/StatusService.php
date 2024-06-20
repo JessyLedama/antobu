@@ -38,4 +38,12 @@ class StatusService
 
         return $status;
     }
+
+    // get active status
+    public static function active()
+    {
+        $status = Status::where('slug', 'active')->first();
+
+        return $status;
+    }
 }
