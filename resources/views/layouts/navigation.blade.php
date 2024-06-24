@@ -1,5 +1,6 @@
 @php 
     $cartCount = \App\Services\CartService::getCartCount();
+    $company = \App\Services\CompanyService::company();
 @endphp
 
 <!-- navigation styles -->
@@ -82,9 +83,15 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            Company Name
-        </a>
+        @if(isset($company))
+            <a class="navbar-brand" href="{{ route('home') }}">
+                {{ ucwords($company->name) }}
+            </a>
+        @else
+            <a class="navbar-brand" href="{{ route('home') }}">
+                Company Name
+            </a>
+        @endif
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

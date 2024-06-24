@@ -46,9 +46,23 @@ class CompanyDetailController extends Controller
 
         $company = CompanyService::store($validated);
 
-        session()->flash('success', 'Your company has been stored.');
+        /**
+         *  currently do not support multi companies, so system checks if a
+         *  company exists. If a company exists, process fails and 
+         *  returns to index. 
+         */
+        if($company == false)
+        {
+            session()->flash('error', 'A company already exists. We are yet to support multiple companies.');
 
-        return redirect()->route('admin.company.index');
+            return redirect()->route('admin.company.index');
+        }
+
+        else{
+            session()->flash('success', 'Your company has been stored.');
+
+            return redirect()->route('admin.company.index');
+        }
     }
 
     /**

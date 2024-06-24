@@ -15,6 +15,17 @@ class CompanyService
      *  Get companies stored in db
      *  Returns a collection
      */  
+    public static function company()
+    {
+        $company = CompanyDetail::first();
+
+        return $company;
+    }
+
+    /**
+     *  Get companies stored in db
+     *  Returns a collection
+     */  
     public static function companies()
     {
         $companies = CompanyDetail::paginate(5);
@@ -30,24 +41,36 @@ class CompanyService
      */ 
     public static function store($validated)
     {
-        
-        $slug = SlugService::make($validated['name']);
+        // if there's a company stored in db, abort.
 
-        $status = StatusService::active();
+        $company = self::company();
 
-        $logo = $validated['logo']->store('companyImages', ['disk' => 'public']);
+        if(isset($company))
+        {
+            session()->flash('error', 'A company already exists. We are yet to support multiple companies.');
 
-        $validated['slug'] = $slug;
+            return false;
+        }
+        else{
 
-        $validated['status_id'] = $status->id;
+            $slug = SlugService::make($validated['name']);
 
-        $validated['user_id'] = auth()->id();
+            $status = StatusService::active();
 
-        $validated['logo'] = $logo;
+            $logo = $validated['logo']->store('companyImages', ['disk' => 'public']);
 
-        $company = CompanyDetail::create($validated);
+            $validated['slug'] = $slug;
 
-        return $company;
+            $validated['status_id'] = $status->id;
+
+            $validated['user_id'] = auth()->id();
+
+            $validated['logo'] = $logo;
+
+            $company = CompanyDetail::create($validated);
+
+            return $company;
+        }
     }
 
     /**
