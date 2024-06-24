@@ -1,3 +1,8 @@
+@php 
+    $cartCount = \App\Services\CartService::getCartCount();
+    $company = \App\Services\CompanyService::company();
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -5,8 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>
-           {{ env('APP_NAME') }}
+           {{ ucwords($company->name) ?? env('APP_NAME') }}
         </title>
+
+        <link rel="shortcut icon" href="{{ asset('storage/'.$company->logo) }}" type="image/x-icon">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

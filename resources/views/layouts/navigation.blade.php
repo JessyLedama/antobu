@@ -1,8 +1,3 @@
-@php 
-    $cartCount = \App\Services\CartService::getCartCount();
-    $company = \App\Services\CompanyService::company();
-@endphp
-
 <!-- navigation styles -->
 <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
 
@@ -83,6 +78,7 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
     <div class="container-fluid">
+        <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
         @if(isset($company))
             <a class="navbar-brand" href="{{ route('home') }}">
                 {{ ucwords($company->name) }}
