@@ -31,7 +31,7 @@
                 <div class="d-flex justify-content-center mb-3">
                   <div class="border mx-1 rounded-2" class="item-thumb">
                     <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Add More Images
                       </button>
                       <ul class="dropdown-menu">
@@ -90,10 +90,10 @@
 
                 @if($product->description == null)
                   @if($product->user_id == Auth::id())
-                    <div class="d-flex justify-content-center mb-3">
+                    <div class="d-flex justify-content-left mb-3">
                       <div class="border mx-1 rounded-2" class="item-thumb">
                         <div class="dropdown">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Add A Description
                           </button>
                           <ul class="dropdown-menu">
