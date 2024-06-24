@@ -46,7 +46,11 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         
         Route::get('edit', [ProductController::class, 'edit'])->name('admin.product.edit');
 
-        Route::post('update', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::post('update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+
+        Route::post('update-more-images/{id}', [ProductController::class, 'updateMoreImages'])->name('admin.product.updateMoreImages');
+
+        Route::post('update-description/{id}', [ProductController::class, 'updateDescription'])->name('admin.product.updateDescription');
 
         Route::get('xlsx', [ProductController::class, 'xlsx'])->name('admin.product.xlsx');
 

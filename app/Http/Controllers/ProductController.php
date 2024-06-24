@@ -75,9 +75,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        //         
     }
 
     /**
@@ -106,5 +106,38 @@ class ProductController extends Controller
         $file = Excel::download(new ProductsExport, 'products.csv');
 
         return $file;
+    }
+
+    /**
+     *  update a product's more_images
+     */
+    public function updateMoreImages(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'more_images.*' => ['mimes:jpg,jpeg,png,gif,csv'],
+        ]);
+
+        $product = ProductService::updateMoreImages($validated, $id);
+
+        session()->flash('success', 'More images uploaded.');
+
+        return back();
+    }
+
+    /**
+     *  update product description
+     */
+    public function updateDescription(Request $request, $id)
+    {
+        
+        $validated = $request->validate([
+            'description' => ['string', 'max:500'],
+        ]);
+
+        $product = ProductService::updateDescription($validated, $id);
+
+        session()->flash('success', 'Produc description updated');
+
+        return back();
     }
 }

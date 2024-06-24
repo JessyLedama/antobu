@@ -62,6 +62,14 @@ class ProductService
         return $product;
     }
 
+    // search product by id
+    public static function find($id)
+    {
+        $product = Product::where('id', $id)->first();
+
+        return $product;
+    }
+
     // search for a category. 
     // this method is to be used with search input
     public static function search($validated)
@@ -73,5 +81,77 @@ class ProductService
                                     ->first();
 
         return $category;
+    }
+
+    /**
+     *  Get similar products to the one being viewed by user.
+     */
+    public static function similar($product)
+    {   
+        $category = $product->product_category_id;
+
+        if(isset($category))
+        {
+            $products = Product::where('product_category_id', $category->id)->random(5)->get();
+
+            return $products;
+        }
+
+        else{
+            return null;
+        }
+    }
+
+    /**
+     *  update an existing product
+     *  return the updated product
+     */
+    public static function update($validated, $id)
+    {
+        $product = self::find($id);
+
+        $product->update($validated);
+
+        $product = $product->save();
+
+        return $product;
+    }
+
+    /**
+     *  update more_images 
+     */
+
+    public static function updateMoreImages($validated, $id)
+    {
+        $product = self::find($id);
+
+        $imagePaths = [];
+
+        foreach($validated['more_images'] as $image)
+        {
+            $imagePath = $image->store('more_images', ['disk' => 'public']);
+
+            array_push($imagePaths, $imagePath);
+        }
+
+        $product->more_images = implode(",", $imagePaths);
+
+        $product->save();
+
+        return $product;
+    }
+
+    /**
+     *  update description
+     */
+    public static function updateDescription($validated, $id)
+    {
+        $product = self::find($id);
+
+        $product->description = $validated['description'];
+
+        $product = $product->save();
+
+        return $product;
     }
 }

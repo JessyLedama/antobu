@@ -13,23 +13,48 @@
             <div class="border rounded-4 mb-3 d-flex justify-content-center">
                 <img style="max-width: 100%; max-height: 100vh; margin: auto;" class="rounded-4 fit" src="{{ asset('storage/'.$product->image) }}" />
             </div>
-            <!-- <div class="d-flex justify-content-center mb-3">
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" class="item-thumb">
-                <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" />
-            </a>
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp" class="item-thumb">
-                <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big2.webp" />
-            </a>
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp" class="item-thumb">
-                <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big3.webp" />
-            </a>
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp" class="item-thumb">
-                <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big4.webp" />
-            </a>
-            <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" class="item-thumb">
-                <img width="60" height="60" class="rounded-2" src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp" />
-            </a>
-            </div> -->
+
+            @if($product->more_images !== null)
+              <div class="d-flex justify-content-center mb-3">
+                @php
+                  $images = explode(',', $product->more_images);
+                @endphp
+
+                @foreach($images as $image)
+                  <a data-fslightbox="mygalley" class="border mx-1 rounded-2" data-type="image" href="#" class="item-thumb">
+                      <img width="60" height="60" class="rounded-2" src="{{ asset('storage/'.$image) }}" />
+                  </a>
+                @endforeach
+              </div>
+            @else
+              @if($product->user_id == Auth::id())
+                <div class="d-flex justify-content-center mb-3">
+                  <div class="border mx-1 rounded-2" class="item-thumb">
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Add More Images
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <h6 class="dropdown-header">
+                            Select multiple images
+                          </h6>
+                        </li>
+                        
+                        <li>
+                          <form action="{{ route('admin.product.updateMoreImages', $product->id) }}" method="post" enctype="multipart/form-data">
+                            @csrf 
+                            <input type="file" name="more_images[]" id="" class="form-control" multiple>
+
+                            <input type="submit" value="Save" class="btn btn-primary">
+                          </form>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              @endif
+            @endif
             <!-- thumbs-wrap.// -->
             <!-- gallery-wrap .end// -->
         </aside>
@@ -51,15 +76,10 @@
                             4.5
                         </span>
                     </div>
-
-                    <span class="text-muted">
-                        <i class="fas fa-shopping-basket fa-sm mx-1"></i>
-                        154 orders
-                    </span>
                     
-                    <span class="text-success ms-2">
+                    <!-- <span class="text-success ms-2">
                         In stock
-                    </span>
+                    </span> -->
                 </div>
 
                 <div class="mb-3">
@@ -68,10 +88,39 @@
                     </span>
                 </div>
 
-                <p>
-                    Modern look and quality demo item is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown clothing low-top shirts for
-                    men.
-                </p>
+                @if($product->description == null)
+                  @if($product->user_id == Auth::id())
+                    <div class="d-flex justify-content-center mb-3">
+                      <div class="border mx-1 rounded-2" class="item-thumb">
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Add A Description
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <h6 class="dropdown-header">
+                                Add a Description
+                              </h6>
+                            </li>
+                            
+                            <li>
+                              <form action="{{ route('admin.product.updateDescription', $product->id) }}" method="post">
+                                @csrf 
+                                <textarea type="text" name="description" id="" class="form-control"></textarea>
+
+                                <input type="submit" value="Save" class="btn btn-primary">
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  @endif
+                @else
+                  <p>
+                    {{ $product->description }}
+                  </p>
+                @endif
 
                 <div class="row">
                     <dt class="col-3">Type:</dt>
@@ -91,12 +140,12 @@
 
                 <div class="row mb-4">
                     <div class="col-md-4 col-6">
-                    <label class="mb-2">Size</label>
-                    <select class="form-select border border-secondary" style="height: 35px;">
-                        <option>Small</option>
-                        <option>Medium</option>
-                        <option>Large</option>
-                    </select>
+                      <label class="mb-2">Size</label>
+                      <select class="form-select border border-secondary" style="height: 35px;">
+                          <option>Small</option>
+                          <option>Medium</option>
+                          <option>Large</option>
+                      </select>
                     </div>
                     <!-- col.// -->
                     <div class="col-md-4 col-6 mb-3">
@@ -224,52 +273,36 @@
         <div class="px-0 border rounded-2 shadow-0">
           <div class="card">
             <div class="card-body">
+
               <h5 class="card-title">Similar items</h5>
-              <div class="d-flex mb-3">
-                <a href="#" class="me-3">
-                  <img src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/8.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
-                </a>
-                <div class="info">
-                  <a href="#" class="nav-link mb-1">
-                    Rucksack Backpack Large <br />
-                    Line Mounts
-                  </a>
-                  <strong class="text-dark"> $38.90</strong>
-                </div>
-              </div>
 
-              <div class="d-flex mb-3">
-                <a href="#" class="me-3">
-                  <img src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/9.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
-                </a>
-                <div class="info">
-                  <a href="#" class="nav-link mb-1">
-                    Summer New Men's Denim <br />
-                    Jeans Shorts
-                  </a>
-                  <strong class="text-dark"> $29.50</strong>
+              @if(!$similarProducts == null)
+                @foreach($similarProducts as $product)
+                  <div class="d-flex mb-3">
+                    <a href="#" class="me-3">
+                      <img src="{{ asset('storage/'.$product->image) }}" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
+                    </a>
+                    <div class="info">
+                      <a href="#" class="nav-link mb-1">
+                        {{ $product->name }} <br />
+                        Line Mounts
+                      </a>
+                      <strong class="text-dark"> 
+                        KSH. {{ $product->price }}
+                      </strong>
+                    </div>
+                  </div>
+                @endforeach
+              @else
+                <div class="d-flex mb-3">
+                
+                  <div class="info">
+                    <a href="#" class="nav-link mb-1">
+                      No Products To Display at this time
+                    </a>
+                  </div>
                 </div>
-              </div>
-
-              <div class="d-flex mb-3">
-                <a href="#" class="me-3">
-                  <img src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/10.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
-                </a>
-                <div class="info">
-                  <a href="#" class="nav-link mb-1"> T-shirts with multiple colors, for men and lady </a>
-                  <strong class="text-dark"> $120.00</strong>
-                </div>
-              </div>
-
-              <div class="d-flex">
-                <a href="#" class="me-3">
-                  <img src="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/11.webp" style="min-width: 96px; height: 96px;" class="img-md img-thumbnail" />
-                </a>
-                <div class="info">
-                  <a href="#" class="nav-link mb-1"> Blazer Suit Dress Jacket for Men, Blue color </a>
-                  <strong class="text-dark"> $339.90</strong>
-                </div>
-              </div>
+              @endif
             </div>
           </div>
         </div>

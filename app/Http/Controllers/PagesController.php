@@ -17,11 +17,18 @@ class PagesController extends Controller
         return view('welcome', compact('products', 'slides'));
     }
 
-    // show selected product
+    /**
+     *  show selected product
+     *  get similar products. (Same category)
+     */
     public function showProduct($slug)
     {
         $product = ProductService::searchBySlug($slug);
 
-        return view('product', compact('product'));
+        $category = $product->category_id;
+
+        $similarProducts = ProductService::similar($product);
+
+        return view('product', compact('product', 'similarProducts'));
     }
 }
