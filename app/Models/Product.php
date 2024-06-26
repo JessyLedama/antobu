@@ -15,14 +15,7 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'slug',
-        'price',
-        'image',
-        'digital_asset',
-        'user_id',
-        'status_id',
-        'product_category_id',
+        'name', 'slug', 'price', 'image', 'digital_asset', 'user_id', 'status_id', 'product_category_id', 'more_images', 'more_info', 'warranty_info', 'shipping_info', 'size', 'brand_id', 'material', 'color', 'rating', 'description',
     ];
 
     // product belongsTo user
@@ -41,5 +34,11 @@ class Product extends Model
     public function status()
     {
         return $this->belongsTo(Status::class, 'status_id');
+    }
+
+    // product belongsTo() brand
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
     }
 }

@@ -23,7 +23,9 @@
         <link rel="stylesheet" href="{{ asset('dist/css/bootstrap.min.css') }}">
 
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/brands.css') }}">
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/solid.css') }}">
 
         <!-- Bootstrap icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
