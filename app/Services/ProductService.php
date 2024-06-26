@@ -154,4 +154,32 @@ class ProductService
 
         return $product;
     }
+
+    /**
+     *  update description
+     */
+    public static function updateColor($validated, $id)
+    {
+        $product = self::find($id);
+
+        $product->color = $validated['color'];
+
+        $product = $product->save();
+
+        return $product;
+    }
+
+    /**
+     *  update description
+     */
+    public static function updateMaterial($validated, $id)
+    {
+        $product = self::find($id);
+
+        $product->material = $validated['material'];
+
+        $product = $product->save();
+
+        return $product;
+    }
 }

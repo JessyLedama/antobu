@@ -140,4 +140,37 @@ class ProductController extends Controller
 
         return back();
     }
+
+    /**
+     *  update product color
+     */
+    public function updateColor(Request $request, $id)
+    {
+        
+        $validated = $request->validate([
+            'color' => ['string', 'max:500'],
+        ]);
+
+        $product = ProductService::updateColor($validated, $id);
+
+        session()->flash('success', 'Produc description updated');
+
+        return back();
+    }
+
+    /**
+     *  update product color
+     */
+    public function updateMaterial(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'material' => ['string', 'max:500'],
+        ]);
+
+        $product = ProductService::updateMaterial($validated, $id);
+
+        session()->flash('success', 'Produc description updated');
+
+        return back();
+    }
 }

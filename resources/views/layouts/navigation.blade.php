@@ -114,11 +114,25 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav me-auto mb-2 mb-md-0>
+            <ul class="navbar-nav mb-2 mb-md-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart') }}">
                         <i class="bi bi-cart"></i>
                         <livewire:cart-count>
+                    </a>
+                </li>
+
+                <li class="nav-item float-right">
+                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">
+                        <span class="fa fa-sign-in"></span>
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item float-right">
+                    <a class="nav-link" aria-current="page" href="{{ route('register') }}">
+                        <span class="fa fa-user-plus"></span>
+                        Sign Up
                     </a>
                 </li>
             </ul>

@@ -66,7 +66,16 @@
   }
   
   .icon-hover:hover i {
+    color: #000 !important;
+  }
+
+  .btn-light{
     color: #3b71ca !important;
+  }
+
+  .btn-light:hover{
+    color: #000 !important;
+    border: #000 solid 1px !important;
   }
   
   

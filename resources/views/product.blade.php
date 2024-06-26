@@ -125,12 +125,65 @@
                 <div class="row">
                     <dt class="col-3">Type:</dt>
                     <dd class="col-9">Regular</dd>
+                    @if($product->color == null)
+                      @if($product->user_id == Auth::id())
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Add A Color
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <h6 class="dropdown-header">
+                                Add a Color
+                              </h6>
+                            </li>
+                            
+                            <li>
+                              <form action="{{ route('admin.product.updateColor', $product->id) }}" method="post">
+                                @csrf 
+                                <textarea type="text" name="color" id="" class="form-control"></textarea>
 
-                    <dt class="col-3">Color</dt>
-                    <dd class="col-9">Brown</dd>
+                                <input type="submit" value="Save" class="btn btn-primary">
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                      @endif
+                    @else
+                      <dt class="col-3">Color</dt>
+                      <dd class="col-9">
+                        {{ ucwords($product->color) }}
+                      </dd>
+                    @endif
 
-                    <dt class="col-3">Material</dt>
-                    <dd class="col-9">Cotton, Jeans</dd>
+                    @if($product->material == null)
+                      @if($product->user_id == Auth::id())
+                        <div class="dropdown">
+                          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Add A Material
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li>
+                              <h6 class="dropdown-header">
+                                Add a Material
+                              </h6>
+                            </li>
+                            
+                            <li>
+                              <form action="{{ route('admin.product.updateMaterial', $product->id) }}" method="post">
+                                @csrf 
+                                <textarea type="text" name="material" id="" class="form-control"></textarea>
+
+                                <input type="submit" value="Save" class="btn btn-primary">
+                              </form>
+                            </li>
+                          </ul>
+                        </div>
+                      @endif
+                    @else
+                      <dt class="col-3">Material</dt>
+                      <dd class="col-9">{{ ucwords($product->material) }}</dd>
+                    @endif
 
                     <dt class="col-3">Brand</dt>
                     <dd class="col-9">Reebook</dd>
@@ -168,7 +221,7 @@
                   Add to cart 
                 </a>
                 
-                <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                <a href="#" class="btn btn-light border border-primary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
             </div>
         </main>
     </div>

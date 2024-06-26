@@ -52,6 +52,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
 
         Route::post('update-description/{id}', [ProductController::class, 'updateDescription'])->name('admin.product.updateDescription');
 
+        Route::post('update-color/{id}', [ProductController::class, 'updateColor'])->name('admin.product.updateColor');
+
+        Route::post('update-material/{id}', [ProductController::class, 'updateMaterial'])->name('admin.product.updateMaterial');
+
         Route::get('xlsx', [ProductController::class, 'xlsx'])->name('admin.product.xlsx');
 
         Route::get('csv', [ProductController::class, 'csv'])->name('admin.product.csv');
