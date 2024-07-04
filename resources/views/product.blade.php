@@ -220,8 +220,17 @@
                   
                   Add to cart 
                 </a>
-                
-                <a href="#" class="btn btn-light border border-primary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
+
+                @if(Auth::check())
+                  <a method="post" href="" class="btn btn-light border border-primary py-2 icon-hover px-3"> 
+                    <i class="me-1 fa fa-heart fa-lg"></i> 
+                    Save 
+                  </a>
+                  <form action="{{ route('wishlist.store', $product->id) }}" method="post">
+                    @csrf 
+                    <input class="btn btn-light border border-primary py-2 icon-hover px-3" type="submit" value="Save">
+                  </form>
+                @endif
             </div>
         </main>
     </div>

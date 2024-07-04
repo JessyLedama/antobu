@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyDetailController;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->group(function(){
     Route::view('profile', 'profile')->name('profile');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+    Route::post('add-to-wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){

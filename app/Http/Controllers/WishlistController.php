@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wishlist;
+use App\Services\WishlistService;
 use Illuminate\Http\Request;
 
 class WishlistController extends Controller
@@ -12,7 +12,9 @@ class WishlistController extends Controller
      */
     public function index()
     {
-        //
+        $wishlists = WishlistService::wishlists();
+        
+        return view('admin.wishlist.index', compact('wishlists'));
     }
 
     /**
@@ -26,9 +28,22 @@ class WishlistController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        $userId = auth()->id();
+
+        $wishlistData = [
+            'user_id' => strval($userId),
+            'product_id' => $id,
+        ];
+
+        $wishlist = WishlistService::store($wishlistData);
+
+        session()->flash('success', 'Product added to your wishlist');
+
+        // return back();
+
+        dd($wishlist);
     }
 
     /**

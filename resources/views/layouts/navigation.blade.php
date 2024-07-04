@@ -117,7 +117,7 @@
             <ul class="navbar-nav mb-2 mb-md-0">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart') }}">
-                        <i class="bi bi-cart"></i>
+                        <i class="fa fa-cart-plus"></i>
                         <livewire:cart-count>
                     </a>
                 </li>

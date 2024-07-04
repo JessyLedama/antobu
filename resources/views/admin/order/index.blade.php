@@ -72,7 +72,7 @@
       </table>
     @else
       <div class="no-orders">
-        No orders to at this time
+        No orders to show at this time
       </div>
     @endif
   </div>
