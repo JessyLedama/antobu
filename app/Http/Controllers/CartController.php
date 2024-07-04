@@ -56,7 +56,7 @@ class CartController extends Controller
     // checkout page
     public function checkout()
     {
-        $cart = session('cart');
+        $cart = CartService::getCart();
 
         return view('checkout', compact('cart'));
     }

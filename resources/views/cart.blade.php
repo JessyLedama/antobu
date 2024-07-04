@@ -93,13 +93,13 @@ use App\Services\CartService;
                     </div>
                     
                     <div class="float-right">
-                        <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">
+                        <a href="{{ route('home') }}" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">
                             Back to shopping
-                        </button>
+                        </a>
                         
-                        <button type="button" class="btn btn-lg btn-primary mt-2">
+                        <a href="{{ route('checkout') }}" class="btn btn-lg btn-primary mt-2">
                             Checkout
-                        </button>
+                        </a>
                     </div>
                 @else
                     <div class="container">

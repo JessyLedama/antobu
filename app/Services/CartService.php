@@ -19,6 +19,7 @@ class CartService
     {
         $cart = session('cart');
         $cart['total'] = self::total();
+        $cart['count'] = self::getCartCount();
 
         return $cart;
     }
