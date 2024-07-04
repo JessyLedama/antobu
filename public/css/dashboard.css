@@ -90,3 +90,11 @@
 .w-5{
   max-height: 40px;
 }
+
+.newsletter-img{
+  max-height: 100px;
+}
+
+.newsletter-content{
+  min-height: 100px;
+}

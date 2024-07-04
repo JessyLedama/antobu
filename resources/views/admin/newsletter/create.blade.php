@@ -71,7 +71,7 @@
         Content
       </label>
 
-      <textarea id="content" name="content" type="text" class="form-control" placeholder="Type your content here..." required></textarea>
+      <textarea id="content" name="content" type="text" class="form-control newsletter-content" placeholder="Type your content here..." required></textarea>
     </div>
 
     <input type="submit" value="Save" class="new-btn">
