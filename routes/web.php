@@ -138,4 +138,6 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     });
 });
 
+Route::view('test', 'test');
+
 require __DIR__.'/auth.php';

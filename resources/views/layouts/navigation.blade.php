@@ -76,7 +76,7 @@
 </div>
 
     
-<nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary theme-navigation-bg">
     <div class="container-fluid">
         <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
         @if(isset($company))
@@ -121,23 +121,9 @@
                         <livewire:cart-count>
                     </a>
                 </li>
-
-                <li class="nav-item float-right">
-                    <a class="nav-link" aria-current="page" href="{{ route('login') }}">
-                        <span class="fa fa-sign-in"></span>
-                        Login
-                    </a>
-                </li>
-
-                <li class="nav-item float-right">
-                    <a class="nav-link" aria-current="page" href="{{ route('register') }}">
-                        <span class="fa fa-user-plus"></span>
-                        Sign Up
-                    </a>
-                </li>
             </ul>
 
-            <form method="post" action="{{ route('search') }}" class="d-flex" role="search">
+            <form method="post" action="{{ route('search') }}" class="d-flex search" role="search">
                 @csrf
                 <input name="name" class="form-control me-2" type="search" placeholder="Search for a product" aria-label="Search">
 
@@ -145,6 +131,32 @@
                     Search
                 </button>
             </form>
+
+            <ul class="navbar-nav mb-2 mb-md-0">
+                
+                @if(Auth::check())
+                    <li class="nav-item float-right">
+                        <a class="nav-link" aria-current="page" href="{{ route('profile') }}">
+                            <span class="fa fa-user"></span>
+                            Hi  {{ Auth::user()->name }}
+                        </a>
+                    </li>
+                @else
+                    <li class="nav-item float-right">
+                        <a class="nav-link" aria-current="page" href="{{ route('login') }}">
+                            <span class="fa fa-sign-in"></span>
+                            Login
+                        </a>
+                    </li>
+
+                    <li class="nav-item float-right">
+                        <a class="nav-link" aria-current="page" href="{{ route('register') }}">
+                            <span class="fa fa-user-plus"></span>
+                            Sign Up
+                        </a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>

@@ -10,18 +10,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        @if(!$theme == null)
+            <link rel="icon" href="{{ asset('storage/'.$theme->favicon) }}" type="image/x-icon">
+        @endif
         
-            @if(!$company == null)
-                <link rel="shortcut icon" href="{{ asset('storage/'.$company->logo) }}" type="image/x-icon">
-
-                <title>
-                    {{ ucwords($company->name) }}
-                </title>
-            @else
-                <title>
-                    {{ env('APP_NAME') }}
-                </title>
-            @endif
+        @if(!$company == null)
+            <title>
+                {{ ucwords($company->name) }}
+            </title>
+        @else
+            <title>
+                {{ env('APP_NAME') }}
+            </title>
+        @endif
 
         <!-- Fonts -->
         <!-- <link rel="preconnect" href="https://fonts.bunny.net"> -->
@@ -41,6 +42,25 @@
         <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"> -->
 
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+
+        <link rel="stylesheet" href="style.css">
+        
+        <!-- Theme styles -->
+        @if(!$theme == null)
+            <style>
+                .theme-navigation-bg{
+                    background-color:{{ $theme->header_color }} !important;
+                }
+
+                .theme-footer-bg{
+                    background-color:{{ $theme->footer_color }} !important;
+                }
+
+                .theme-title{
+                    color:{{ $theme->primary_color }} !important;
+                }
+            </style>
+        @endif
     </head>
 
     <body>
