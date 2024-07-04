@@ -20,7 +20,7 @@
 
                         <div class="container">
                             <div class="carousel-caption text-start">
-                                <h1>
+                                <h1 class="theme-title">
                                     {{ ucfirst($slide->name) }}
                                 </h1>
                                 
@@ -29,7 +29,7 @@
                                 </p>
                                 
                                 <p>
-                                    <a class="btn btn-lg btn-primary" href="#">
+                                    <a class="btn btn-lg primary-btn theme-primary-btn" href="#">
                                         Sign up today
                                     </a>
                                 </p>

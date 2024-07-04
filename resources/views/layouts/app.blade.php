@@ -59,6 +59,15 @@
                 .theme-title{
                     color:{{ $theme->primary_color }} !important;
                 }
+
+                .theme-primary-btn{
+                    background-color:{{ $theme->primary_color }} !important;
+                }
+
+                .theme-primary-btn:hover{
+                    background-color:{{ $theme->secondary_color }} !important;
+                    border:1px solid {{ $theme->primary_color }};
+                }
             </style>
         @endif
     </head>

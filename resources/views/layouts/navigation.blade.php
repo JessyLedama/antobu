@@ -127,7 +127,7 @@
                 @csrf
                 <input name="name" class="form-control me-2" type="search" placeholder="Search for a product" aria-label="Search">
 
-                <button class="btn btn-secondary" type="submit">
+                <button class="btn btn-primary theme-primary-btn" type="submit">
                     Search
                 </button>
             </form>
