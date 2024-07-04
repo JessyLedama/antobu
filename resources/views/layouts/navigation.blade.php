@@ -139,7 +139,7 @@
 
             <form method="post" action="{{ route('search') }}" class="d-flex" role="search">
                 @csrf
-                <input name="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="name" class="form-control me-2" type="search" placeholder="Search for a product" aria-label="Search">
 
                 <button class="btn btn-secondary" type="submit">
                     Search

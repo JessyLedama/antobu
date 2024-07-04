@@ -70,17 +70,20 @@ class ProductService
         return $product;
     }
 
-    // search for a category. 
-    // this method is to be used with search input
+    /**
+     *  Search for products.
+     *  This method is used by search input. 
+     *  Returns a collection of products.
+     */
     public static function search($validated)
     {
         $search = $validated['name'];
 
-        $category = Product::where('name', 'LIKE', "%$search%")
+        $products = Product::where('name', 'LIKE', "%$search%")
                                     ->with(['category'])
-                                    ->first();
+                                    ->get();
 
-        return $category;
+        return $products;
     }
 
     /**

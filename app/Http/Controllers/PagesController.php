@@ -31,4 +31,19 @@ class PagesController extends Controller
 
         return view('product', compact('product', 'similarProducts'));
     }
+
+    /**
+     *  Search for a product by name.
+     *  Using form input, so data going to ProductService is called $validated
+     */
+    public function search(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $products = ProductService::search($validated);
+
+        return view('search-results', compact('products'));
+    }
 }

@@ -14,9 +14,7 @@ use App\Http\Controllers\WishlistController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
-Route::get('search', function () {
-    // return view('welcome');
-})->name('search');
+Route::post('search', [PagesController::class, 'search'])->name('search');
 
 Route::get('product/{slug}', [PagesController::class, 'showProduct'])->name('product.show');
 
