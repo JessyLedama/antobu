@@ -13,6 +13,8 @@ use App\Http\Controllers\CompanyDetailController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ThemeController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -110,6 +112,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     // SETTINGS
     Route::prefix('settings')->group(function(){
 
+        Route::get('/', [SettingsController::class, 'index'])->name('admin.settings');
+
         // Company Details
         Route::prefix('company')->group(function(){
             Route::get('', [CompanyDetailController::class, 'index'])->name('admin.company.index');
@@ -121,6 +125,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             Route::get('edit', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
             
             Route::post('update', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+        });
+
+        // THEME
+        Route::prefix('theme')->group(function(){
+            Route::get('/', [ThemeController::class, 'index'])->name('admin.theme.index');
+
+            Route::get('create', [ThemeController::class, 'create'])->name('admin.theme.create');
+
+            Route::post('store', [ThemeController::class, 'store'])->name('admin.theme.store');
         });
     });
 });

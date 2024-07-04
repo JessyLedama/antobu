@@ -12,8 +12,8 @@ use App\Services\SlugService;
 class CompanyService
 {
     /**
-     *  Get companies stored in db
-     *  Returns a collection
+     *  Get the first company stored in db
+     *  Returns an object
      */  
     public static function company()
     {

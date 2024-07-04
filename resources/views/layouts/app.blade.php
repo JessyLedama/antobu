@@ -1,6 +1,7 @@
 @php 
     $cartCount = \App\Services\CartService::getCartCount();
     $company = \App\Services\CompanyService::company();
+    $theme = \App\Services\ThemeService::active();
 @endphp
 
 <!DOCTYPE html>
