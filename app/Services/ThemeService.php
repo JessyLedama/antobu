@@ -54,4 +54,37 @@ class ThemeService
 
         return $theme;
     }
+
+    /**
+     *  Search for a theme by its slug.
+     *  Returns a single object
+     */
+    public static function searchBySlug($slug)
+    {
+        $theme = Theme::where('slug', $slug)->first();
+
+        return $theme;
+    }
+
+    /**
+     *  Update an existing theme.
+     *  Returns the updated object.
+     */
+    public  static function update($validated, $slug)
+    {
+        $theme = self::searchBySlug($slug);
+
+        if(isset($validated['favicon']))
+        {
+            $favicon = $validated['favicon']->store('favicons', ['disk' => 'public']);
+
+            $validated['favicon'] = $favicon;
+        }
+
+        $theme->update($validated);
+
+        $theme->save();
+
+        return $theme;
+    }
 }

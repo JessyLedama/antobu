@@ -57,17 +57,32 @@ class ThemeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Theme $theme)
+    public function edit($slug)
     {
-        //
+        $theme = ThemeService::searchBySlug($slug);
+
+        return view('admin.theme.edit', compact('theme'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Theme $theme)
+    public function update(Request $request, $slug)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'favicon' => ['mimes:jpg,jpeg,png,gif,svg', 'max:5000'],
+            'primary_color' => ['string'],
+            'secondary_color' => ['string'],
+            'title_font' => ['string'],
+            'content_font' => ['string'],
+            'header_color' => ['string'],
+            'footer_color' => ['string'],
+        ]);
+
+        $theme = ThemeService::update($validated, $slug);
+
+        return redirect()->route('admin.theme.index');
     }
 
     /**

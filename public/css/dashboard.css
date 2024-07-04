@@ -98,3 +98,7 @@
 .newsletter-content{
   min-height: 100px;
 }
+
+.favicon{
+  max-height: 100px;
+}

@@ -68,6 +68,10 @@
           <th scope="col">
             Status
           </th>
+
+          <th scope="col">
+            Action
+          </th>
         </tr>
       </thead>
 
@@ -84,13 +88,22 @@
               </td>
 
               <td class="product-text">
-                <span >
-                  {{ ucfirst($theme->name) }}
-                </span>
+                <a href="#">
+                  <span >
+                    {{ ucfirst($theme->name) }}
+                  </span>
+                </a>
               </td>
 
               <td>
                 {{ ucwords($theme->status->name) }}
+              </td>
+
+              <td>
+                <a href="{{ route('admin.theme.edit', $theme->slug) }}">
+                  <span class="fa fa-pencil"></span>
+                  Edit
+                </a>
               </td>
             </tr>
           @endforeach

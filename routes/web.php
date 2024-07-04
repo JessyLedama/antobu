@@ -134,6 +134,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             Route::get('create', [ThemeController::class, 'create'])->name('admin.theme.create');
 
             Route::post('store', [ThemeController::class, 'store'])->name('admin.theme.store');
+
+            Route::get('edit/{slug}', [ThemeController::class, 'edit'])->name('admin.theme.edit');
+
+            Route::post('update/{slug}', [ThemeController::class, 'update'])->name('admin.theme.update');
         });
     });
 });
