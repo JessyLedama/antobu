@@ -78,6 +78,22 @@
     
 <nav class="navbar navbar-expand-md navbar-dark bg-primary theme-navigation-bg">
     <div class="container-fluid">
+        @if(Auth::check())
+            <div class="dropdown app-menu">
+                <button class="btn btn-secondary theme-primary-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="fa fa-list"></span>
+                </button>
+
+                <ul class="dropdown-menu">
+                    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                </ul>
+            </div>
+        @endif
         <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
         @if(isset($company))
             <a class="navbar-brand" href="{{ route('home') }}">

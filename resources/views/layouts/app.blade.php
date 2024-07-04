@@ -77,7 +77,7 @@
         @yield('content')
     </body>
 
-    <footer>
+    <footer class="theme-footer-container">
         @include('layouts.footer')
 
         <script src="{{ asset('js/color-modes.js') }}"></script>

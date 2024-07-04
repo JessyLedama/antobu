@@ -167,7 +167,7 @@
 
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.company.index') }}">
+              <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.settings') }}">
                 <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
                 Settings
               </a>

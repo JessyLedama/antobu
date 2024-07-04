@@ -9,6 +9,10 @@
         <div class="col-12 col-lg-3 col-sm-12 mb-2">
           <!-- Content -->
           @if(!$company->name == null)
+            <img src="{{ asset('storage/'.$theme->favicon) }}" class="footer-logo" alt="">
+
+            <br />
+
             <a href="{{ $company->website }}" target="_blank" class="text-white h2">
               {{ ucwords($company->name) }}
             </a>

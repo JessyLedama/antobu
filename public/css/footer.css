@@ -1,3 +1,12 @@
 .subscribe-btn{
     margin-top: 0.5rem;
 }
+
+.theme-footer-container{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.footer-logo{
+    max-width: 12rem;
+}
