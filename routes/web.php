@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyDetailController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\NewsletterSubscriberController;
+use App\Http\Controllers\NewsletterController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -24,6 +25,8 @@ Route::get('add-to-cart/{slug}', [CartController::class, 'addToCart'])->name('ad
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
 
 Route::post('newsletter-subscribe', [NewsletterSubscriberController::class, 'store'])->name('newsletterSubscribe');
+
+Route::get('newsletter/{slug}', [NewsletterController::class, 'show'])->name('newsletter.show');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
@@ -92,6 +95,16 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
 
         Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
+    });
+
+    // NEWSLETTERS
+    Route::prefix('newsletters')->group(function(){
+
+        Route::get('/', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
+
+        Route::get('create', [NewsletterController::class, 'create'])->name('admin.newsletter.create');
+
+        Route::post('store', [NewsletterController::class, 'store'])->name('admin.newsletter.store');
     });
 
     // SETTINGS
