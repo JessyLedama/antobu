@@ -88,7 +88,7 @@
               </td>
 
               <td class="product-text">
-                <a href="#">
+                <a href="{{ route('admin.theme.show', $theme->slug) }}">
                   <span >
                     {{ ucfirst($theme->name) }}
                   </span>

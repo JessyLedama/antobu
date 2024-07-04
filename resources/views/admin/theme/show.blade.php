@@ -33,7 +33,11 @@
 
   <div class="btn-container">
     <a class="new-btn" href="{{ route('admin.theme.create') }}">
-      New Theme
+      New
+    </a>
+
+    <a class="new-btn" href="{{ route('admin.theme.edit', $theme->slug) }}">
+      Edit
     </a>
   </div>
 
@@ -54,10 +58,6 @@
       <thead>
         <tr>
           <th scope="col">
-            #
-          </th>
-
-          <th scope="col">
             Favicon
           </th>
           
@@ -71,40 +71,83 @@
         </tr>
       </thead>
 
-      @if($themes->count() > 0)
-        <tbody>
-          @foreach($themes as $key => $theme)
-            <tr>
-              <td>
-                {{ $key + 1 }}
-              </td>
+      <tbody>
+          <tr>
+            <td>
+              <img class="product-img" src="{{ asset('storage/'.$theme->favicon) }}" alt="">
+            </td>
 
-              <td>
-                <img class="product-img" src="{{ asset('storage/'.$theme->favicon) }}" alt="">
-              </td>
+            <td class="product-text">
+              <span >
+                {{ ucfirst($theme->name) }}
+              </span>
+            </td>
 
-              <td class="product-text">
-                <span >
-                  {{ ucfirst($theme->name) }}
-                </span>
-              </td>
-
-              <td>
-                {{ ucwords($theme->status->name) }}
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      @else
-        <div>
-          There are no themes. Add some!
-        </div>
-      @endif
+            <td>
+              {{ ucwords($theme->status->name) }}
+            </td>
+          </tr>
+      </tbody>
     </table>
+  </div>
 
-    <span class="pagination">
-      {{ $themes->links() }}
-    </span>
+  <div class="row">
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Primary Color: 
+        <span style="color:{{ $theme->primary_color }}">
+          {{ $theme->primary_color }}
+        </span>
+
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Secondary Color: 
+        <span style="color:{{ $theme->secondary_color }}">
+          {{ $theme->secondary_color }}
+        </span>
+
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Header Color: 
+        <span style="color:{{ $theme->header_color }}">
+          {{ $theme->header_color }}
+        </span>
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Footer Color: 
+        <span style="color:{{ $theme->footer_color }}">
+          {{ $theme->footer_color }}
+        </span>
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Title Font: 
+        <span style="color:{{ $theme->primary_color }}">
+          {{ $theme->title_font }}
+        </span>
+
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label for="primary-color">
+        Content Font: 
+        <span style="color:{{ $theme->primary_color }}">
+          {{ $theme->content_font }}
+        </span>
+      </label>
+    </div>
   </div>
 </main>
 @endsection

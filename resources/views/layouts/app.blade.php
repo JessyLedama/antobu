@@ -43,7 +43,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
         
         <!-- Theme styles -->
         @if(!$theme == null)

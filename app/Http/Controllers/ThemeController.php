@@ -49,9 +49,11 @@ class ThemeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Theme $theme)
+    public function show($slug)
     {
-        //
+        $theme = ThemeService::searchBySlug($slug);
+        
+        return view('admin.theme.show', compact('theme'));
     }
 
     /**

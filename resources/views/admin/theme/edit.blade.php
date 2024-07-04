@@ -117,7 +117,7 @@
       <input name="footer_color" type="text" class="form-control" id="" value="{{ $theme->footer_color }}">
     </div>
 
-    <input type="submit" value="Save" class="new-btn">
+    <input type="submit" value="Update" class="new-btn">
   </form>
 </main>
 @endsection
