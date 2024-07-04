@@ -8,11 +8,23 @@
         <!-- Grid column -->
         <div class="col-12 col-lg-3 col-sm-12 mb-2">
           <!-- Content -->
-          <a href="https://simitechnologies.co.ke" target="_blank" class="text-white h2">
-            Laravel Ecommerce
-          </a>
+          @if(!$company->name == null)
+            <a href="{{ $company->website }}" target="_blank" class="text-white h2">
+              {{ ucwords($company->name) }}
+            </a>
+          @else
+            <a href="{{ $company->website }}" target="_blank" class="text-white h2">
+              {{ env('APP_NAME') }}
+            </a>
+          @endif
+
           <p class="mt-1 text-white">
-            © 2024 - {{ date("Y") }}  <br/>
+            @if(date("Y") == 2024)
+              © {{ date("Y") }}  <br/>
+            @else
+              © 2024 - {{ date("Y") }}  <br/>
+            @endif
+
             Copyright: 
             <a class="mt-1 text-white" href="https://simitechnologies.co.ke" target="_blank">
                 SIMI Technologies
@@ -69,13 +81,33 @@
         <!-- Grid column -->
         <div class="col-12 col-sm-12 col-lg-3">
           <!-- Links -->
-          <h6 class="text-uppercase text-white fw-bold mb-2">Newsletter</h6>
-          <p class="text-white">Stay in touch with latest updates about our products and offers</p>
+          <h6 class="text-uppercase text-white fw-bold mb-2">
+            Newsletter
+          </h6>
+          
+          <p class="text-white">
+            Stay in touch with latest updates about our products and offers
+          </p>
+          
           <div class="input-group mb-3">
-            <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />
-            <button class="btn btn-light border shadow-0" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-              Join
-            </button>
+
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+            @endif
+
+            <form action="{{ route('newsletterSubscribe') }}" method="post">
+              @csrf
+              <input type="email" name="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" required/>
+              <button class="btn btn-light border shadow-0 subscribe-btn" type="submit" id="button-addon2" data-mdb-ripple-color="dark">
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
         <!-- Grid column -->

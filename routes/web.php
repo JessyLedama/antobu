@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyDetailController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\NewsletterSubscriberController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -21,6 +22,8 @@ Route::get('product/{slug}', [PagesController::class, 'showProduct'])->name('pro
 Route::get('add-to-cart/{slug}', [CartController::class, 'addToCart'])->name('addToCart');
 
 Route::get('cart', [CartController::class, 'cart'])->name('cart');
+
+Route::post('newsletter-subscribe', [NewsletterSubscriberController::class, 'store'])->name('newsletterSubscribe');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('checkout', [CartController::class, 'checkout'])->name('checkout');
