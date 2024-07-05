@@ -107,4 +107,17 @@ class CompanyService
 
         return $company;
     }
+
+    /**
+     *  Get the active company.
+     *  Returns a single object.
+     */
+    public static function active()
+    {
+        $status = StatusService::active();
+
+        $company = CompanyDetail::where('status_id', $status->id)->first();
+
+        return $company;
+    }
 }

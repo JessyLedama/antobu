@@ -72,6 +72,10 @@
           <th scope="col">
             Country
           </th>
+
+          <th scope="col">
+            Status
+          </th>
         </tr>
       </thead>
       @if($companies->count() > 0)
@@ -98,6 +102,10 @@
 
             <td>
               {{ $company->country }}
+            </td>
+
+            <td>
+              {{ ucwords($company->status->name) }}
             </td>
           </tr>
         @endforeach

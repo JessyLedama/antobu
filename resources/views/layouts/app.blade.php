@@ -73,11 +73,13 @@
 
                 .theme-secondary-btn{
                     background-color:{{ $theme->secondary_button ??  $theme->secondary_color }} !important;
+                    color:#fff;
                 }
 
                 .theme-secondary-btn:hover{
                     background-color:{{ $theme->primary_button }} !important;
                     border:1px solid {{ $theme->secondary_button }};
+                    color:#fff;
                 }
 
                 .theme-primary-color{

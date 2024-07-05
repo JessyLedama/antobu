@@ -19,7 +19,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <a href="{{ route('admin.order.index') }}">
+              <a href="{{ route('admin.company.index') }}">
                   <h5 class="card-title">
                       Companies
 

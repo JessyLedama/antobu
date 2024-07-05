@@ -69,6 +69,20 @@
       <small> Current Favicon </small>
     </div>
 
+    <select name="navigation_brand" id="" class="form-control">
+      <option value="">
+        Select a Navigation Brand
+      </option>
+
+      <option value="name">
+        Company Name
+      </option>
+
+      <option value="logo">
+        Company Logo
+      </option>
+    </select>
+
     <div class="mb-3">
       <label for="primary_color" class="form-label">
         Primary Color

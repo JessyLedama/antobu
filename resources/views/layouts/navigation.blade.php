@@ -92,13 +92,27 @@
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Separated link</a></li>
                 </ul>
-            </div>
+                   </div>
         @endif
-        <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
+ <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
         @if(isset($company))
-            <a class="navbar-brand" href="{{ route('home') }}">
-                {{ ucwords($company->name) }}
-            </a>
+            @if(isset($theme))
+                @if($theme->navigation_brand == 'name')
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        {{ ucwords($company->name) }}
+                    </a>
+                @elseif($theme->navigation_brand == 'logo')
+                    <img class="theme-navigation-logo" src="{{ asset('storage/'.$company->logo) }}" alt="">
+                @else
+                    <a class="navbar-brand" href="{{ route('home') }}">
+                        {{ ucwords($company->name) }}
+                    </a>
+                @endif
+            @else
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    {{ ucwords($company->name) }}
+                </a>
+            @endif
         @else
             <a class="navbar-brand" href="{{ route('home') }}">
                 Company Name
@@ -141,7 +155,7 @@
 
             <form method="post" action="{{ route('search') }}" class="d-flex search" role="search">
                 @csrf
-                <input name="name" class="form-control me-2" type="search" placeholder="Search for a product" aria-label="Search">
+                <input name="name" class="form-control me-2" type="search" placeholder="Search for a product" aria-label="Search" required>
 
                 <button class="btn btn-primary theme-primary-btn" type="submit">
                     Search

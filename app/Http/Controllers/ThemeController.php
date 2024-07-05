@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ThemeService;
 use Illuminate\Http\Request;
+use App\Services\CompanyService;
 
 class ThemeController extends Controller
 {
@@ -22,7 +23,9 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        return view('admin.theme.create');
+        $company = CompanyService::active();
+
+        return view('admin.theme.create', compact('company'));
     }
 
     /**
@@ -39,6 +42,7 @@ class ThemeController extends Controller
             'content_font' => ['string'],
             'header_color' => ['string'],
             'footer_color' => ['string'],
+            'navigation_brand' => ['string']
         ]);
 
         $theme = ThemeService::store($validated);
@@ -63,7 +67,9 @@ class ThemeController extends Controller
     {
         $theme = ThemeService::searchBySlug($slug);
 
-        return view('admin.theme.edit', compact('theme'));
+        $company = CompanyService::active();
+
+        return view('admin.theme.edit', compact('theme', 'company'));
     }
 
     /**
@@ -81,7 +87,8 @@ class ThemeController extends Controller
             'header_color' => ['string'],
             'footer_color' => ['string'],
             'primary_button' => ['string'],
-            'secondary_button' => ['string']
+            'secondary_button' => ['string'],
+            'navigation_brand' => ['string'],
         ]);
 
         $theme = ThemeService::update($validated, $slug);

@@ -32,7 +32,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.product.index') }}">
+    <a class="new-btn" href="{{ route('admin.theme.index') }}">
       All Themes
     </a>
   </div>
@@ -65,6 +65,21 @@
 
       <input name="favicon" type="file" class="form-control" id="" required>
     </div>
+
+    <select name="navigation_brand" id="" class="form-control" required>
+      <option value="">
+        Select a Navigation Brand
+      </option>
+
+      <option value="name">
+        Company Name
+      </option>
+
+      <option value="logo">
+        Company Logo
+      </option>
+      
+    </select>
 
     <div class="mb-3">
       <label for="primary_color" class="form-label">
