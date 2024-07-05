@@ -104,6 +104,13 @@
                   <span class="fa fa-pencil"></span>
                   Edit
                 </a>
+
+                @if($theme->status->name == 'inactive')
+                  <a href="{{ route('admin.theme.activate', $theme->slug) }}" class="btn theme-primary-btn">
+                    <!-- <span class="fa fa-pencil"></span> -->
+                    Activate
+                  </a>
+                @endif
               </td>
             </tr>
           @endforeach

@@ -156,6 +156,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             Route::post('update/{slug}', [ThemeController::class, 'update'])->name('admin.theme.update');
 
             Route::get('show/{slug}', [ThemeController::class, 'show'])->name('admin.theme.show');
+
+            Route::get('activate/{slug}', [ThemeController::class, 'activate'])->name('admin.theme.activate');
         });
     });
 });

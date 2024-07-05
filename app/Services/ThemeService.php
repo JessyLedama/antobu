@@ -87,4 +87,31 @@ class ThemeService
 
         return $theme;
     }
+
+    /**
+     *  Activate a theme. 
+     *  To activate a new theme, first deactivate the currently active theme.
+     */
+    public static function activate($slug)
+    {
+        // get the statuses
+        $activeStatus = StatusService::active();
+        $inactiveStatus = StatusService::inactive();
+
+        // theme to be activated
+        $theme = self::searchBySlug($slug);
+
+        // currently active theme
+        $active = Theme::where('status_id', $activeStatus->id)->first();
+
+        // deactivate active theme
+        $active->status_id = $inactiveStatus->id;
+        $active->save();
+
+        // activate theme
+        $theme->status_id = $activeStatus->id;
+        $theme->save();
+
+        return true;
+    }
 }

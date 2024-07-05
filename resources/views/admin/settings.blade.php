@@ -53,7 +53,11 @@
             <div class="card-body">
               <a href="{{ route('admin.theme.index') }}">
                   <h5 class="card-title">
-                      Theme
+                      Themes
+
+                      <span class="float-right">
+                          {{ $counts->themes_count }}
+                      </span>
                   </h5>
               </a>
             </div>

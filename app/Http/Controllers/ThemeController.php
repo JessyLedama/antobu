@@ -90,8 +90,18 @@ class ThemeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Theme $theme)
+    public function destroy($slug)
     {
         //
+    }
+
+    /**
+     *  Activate a theme.
+     */
+    public function activate($slug)
+    {
+        $theme = ThemeService::activate($slug);
+
+        return back();
     }
 }

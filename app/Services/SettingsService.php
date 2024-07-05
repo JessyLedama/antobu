@@ -20,7 +20,7 @@ class SettingsService
                 (SELECT COUNT(*) FROM product_categories) AS product_categories_count,
                 (SELECT COUNT(*) FROM slideshows) AS slideshows_count,
                 (SELECT COUNT(*) FROM statuses) AS statuses_count,
-                (SELECT COUNT(*) FROM orders) AS orders_count
+                (SELECT COUNT(*) FROM themes) AS themes_count
             '
         );
 

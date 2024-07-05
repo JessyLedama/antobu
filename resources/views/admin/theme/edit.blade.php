@@ -32,7 +32,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.product.index') }}">
+    <a class="new-btn" href="{{ route('admin.theme.index') }}">
       All Themes
     </a>
   </div>
