@@ -54,9 +54,11 @@ class SlideshowController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Slideshow $slideshow)
+    public function edit($slug)
     {
-        //
+        $slide = SlideshowService::searchBySlug($slug);
+
+        return view('admin.slide.edit', compact('slide'));
     }
 
     /**

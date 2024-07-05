@@ -34,4 +34,15 @@ class SlideshowService
 
         return $slide;
     }
+
+    /**
+     *  Search for a slideshow by its slug.
+     *  Returns a single object.
+     */
+    public static function searchBySlug($slug)
+    {
+        $slide = Slideshow::where('slug', $slug)->first();
+
+        return $slide;
+    }
 }

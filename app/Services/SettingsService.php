@@ -28,20 +28,4 @@ class SettingsService
 
         return $counts;
     }
-
-    // get users chart
-    public static function usersChart()
-    {
-        $users = User::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))->groupBy('date')->orderBy('date', 'ASC')->get();
-
-        return $users;
-    }
-
-    // get companies chart
-    public static function companiesChart()
-    {
-        $companies = CompanyDetail::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))->groupBy('date')->orderBy('date', 'ASC')->get();
-
-        return $companies;
-    }
 }

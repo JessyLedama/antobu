@@ -15,6 +15,7 @@ use App\Http\Controllers\NewsletterSubscriberController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\StatusController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -97,6 +98,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
 
         Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
+
+        Route::get('edit/{slug}', [SlideshowController::class, 'edit'])->name('admin.slide.edit');
     });
 
     // NEWSLETTERS
@@ -125,6 +128,19 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             Route::get('edit', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
             
             Route::post('update', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+        });
+
+        // STATUS
+        Route::prefix('status')->group(function(){
+            Route::get('', [StatusController::class, 'index'])->name('admin.status.index');
+            
+            Route::get('create', [StatusController::class, 'create'])->name('admin.status.create');
+            
+            Route::post('store', [StatusController::class, 'store'])->name('admin.status.store');
+            
+            Route::get('edit', [StatusController::class, 'edit'])->name('admin.status.edit');
+            
+            Route::post('update', [StatusController::class, 'update'])->name('admin.status.update');
         });
 
         // THEME

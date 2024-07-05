@@ -103,3 +103,11 @@
 .favicon{
   max-height: 100px;
 }
+
+.slide-img{
+  max-width: 70%;
+}
+
+.current-img{
+  max-width: 100px;
+}

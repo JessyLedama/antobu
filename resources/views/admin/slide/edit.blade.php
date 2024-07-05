@@ -6,11 +6,10 @@
 
 @include('admin.sidebar')
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
     <h1 class="h2">
-      New Slideshow
+      Edit Slideshow
     </h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -36,34 +35,38 @@
       All Slides
     </a>
   </div>
-
+  
   <form action="{{ route('admin.slide.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">
+      <label for="slideshow-title" class="form-label theme-primary-color">
         Slideshow Title
       </label>
 
-      <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Example Headline" required>
+      <input name="name" type="text" class="form-control theme-secondary-color" id="title" placeholder="Example Headline" value="{{ $slide->name }}" required>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">
+      <label for="slideshow-image" class="form-label theme-primary-color">
         Slideshow Image
       </label>
 
-      <input name="image" type="file" class="form-control" id="exampleFormControlInput1" required>
+      <input name="image" type="file" class="form-control" id="slideshowImage" required>
+      <img src="{{ asset('storage/'.$slide->image) }}" class="current-img" alt="">
+      <small class="theme-secondary-color">
+        Current image
+      </small>
     </div>
 
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">
+      <label for="caption" class="form-label theme-primary-color">
         Caption
       </label>
 
-      <textarea name="caption" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+      <textarea name="caption" class="form-control theme-secondary-color" id="caption" rows="3" required>{{ $slide->caption }}</textarea>
     </div>
 
-    <input type="submit" value="Save" class="btn theme-primary-btn">
+    <input type="submit" value="Update" class="btn theme-primary-btn">
   </form>
 </main>
 @endsection

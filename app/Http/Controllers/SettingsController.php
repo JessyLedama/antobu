@@ -16,26 +16,6 @@ class SettingsController extends Controller
     {
         $counts = SettingsService::counts();
 
-        // get chart for orders
-        $users = SettingsService::usersChart();
-
-        $usersChart = [
-            'labels' => $users->pluck('date')->toArray(),
-            'data' => $users->pluck('count')->toArray(),
-        ];
-
-        $usersChart = json_encode($usersChart);
-
-        // get chart for companies
-        $companies = SettingsService::companiesChart();
-
-        $companiesChart = [
-            'labels' => $companies->pluck('date')->toArray(),
-            'data' => $companies->pluck('count')->toArray(),
-        ];
-
-        $companiesChart = json_encode($companiesChart);
-
-        return view('admin.settings', compact('counts', 'usersChart', 'companiesChart'));
+        return view('admin.settings', compact('counts'));
     }
 }

@@ -62,11 +62,22 @@
 
                 .theme-primary-btn{
                     background-color:{{ $theme->primary_color }} !important;
+                    color:#fff;
                 }
 
                 .theme-primary-btn:hover{
                     background-color:{{ $theme->secondary_color }} !important;
                     border:1px solid {{ $theme->primary_color }};
+                    color:#fff;
+                }
+
+                .theme-secondary-btn{
+                    background-color:{{ $theme->secondary_color }} !important;
+                }
+
+                .theme-secondary-btn:hover{
+                    background-color:{{ $theme->primary_color }} !important;
+                    border:1px solid {{ $theme->secondary_color }};
                 }
 
                 .theme-primary-color{
