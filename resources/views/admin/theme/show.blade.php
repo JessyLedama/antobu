@@ -148,6 +148,18 @@
         </span>
       </label>
     </div>
+
+    <div class="col-md-3 theme-card">
+      <label class="btn theme-primary-btn" for="primary-color theme-secondary-btn">
+        Primary Button
+      </label>
+    </div>
+
+    <div class="col-md-3 theme-card">
+      <label class="btn theme-secondary-btn" for="primary-color theme-secondary-btn">
+        Secondary Button 
+      </label>
+    </div>
   </div>
 </main>
 @endsection

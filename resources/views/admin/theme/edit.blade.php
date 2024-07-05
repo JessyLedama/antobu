@@ -63,7 +63,7 @@
         Website Icon (Favicon)
       </label>
 
-      <input name="favicon" type="file" class="form-control" id="" required>
+      <input name="favicon" type="file" class="form-control" id="">
 
       <img class="favicon" src="{{ asset('storage/'.$theme->favicon) }}" alt="Current favicon">
       <small> Current Favicon </small>
@@ -74,7 +74,7 @@
         Primary Color
       </label>
 
-      <input name="primary_color" type="text" class="form-control" id="" placeholder="Enter Primary Color" value="{{ $theme->primary_color }}" required>
+      <input name="primary_color" type="text" class="form-control" id="" placeholder="Enter Primary Color" value="{{ $theme->primary_color }}">
     </div>
 
     <div class="mb-3">
@@ -83,6 +83,22 @@
       </label>
 
       <input name="secondary_color" type="text" class="form-control" id="" value="{{ $theme->secondary_color }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="primary_button" class="form-label">
+        Primary Button
+      </label>
+
+      <input name="primary_button" type="text" class="form-control" id="" placeholder="Enter Primary Button" value="{{ $theme->primary_button }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="secondary_button" class="form-label">
+        Secondary Button
+      </label>
+
+      <input name="secondary_button" type="text" class="form-control" placeholder="Enter Secondary Button" id="" value="{{ $theme->secondary_button }}">
     </div>
 
     <div class="mb-3">

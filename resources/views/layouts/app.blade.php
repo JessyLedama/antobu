@@ -61,23 +61,23 @@
                 }
 
                 .theme-primary-btn{
-                    background-color:{{ $theme->primary_color }} !important;
+                    background-color:{{ $theme->primary_button ?? $theme->primary_color }} !important;
                     color:#fff;
                 }
 
                 .theme-primary-btn:hover{
-                    background-color:{{ $theme->secondary_color }} !important;
-                    border:1px solid {{ $theme->primary_color }};
+                    background-color:{{ $theme->secondary_button }} !important;
+                    border:1px solid {{ $theme->primary_button }};
                     color:#fff;
                 }
 
                 .theme-secondary-btn{
-                    background-color:{{ $theme->secondary_color }} !important;
+                    background-color:{{ $theme->secondary_button ??  $theme->secondary_color }} !important;
                 }
 
                 .theme-secondary-btn:hover{
-                    background-color:{{ $theme->primary_color }} !important;
-                    border:1px solid {{ $theme->secondary_color }};
+                    background-color:{{ $theme->primary_button }} !important;
+                    border:1px solid {{ $theme->secondary_button }};
                 }
 
                 .theme-primary-color{

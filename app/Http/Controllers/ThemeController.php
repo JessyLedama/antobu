@@ -80,6 +80,8 @@ class ThemeController extends Controller
             'content_font' => ['string'],
             'header_color' => ['string'],
             'footer_color' => ['string'],
+            'primary_button' => ['string'],
+            'secondary_button' => ['string']
         ]);
 
         $theme = ThemeService::update($validated, $slug);

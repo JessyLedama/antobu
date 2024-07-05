@@ -83,6 +83,22 @@
     </div>
 
     <div class="mb-3">
+      <label for="primary_button" class="form-label">
+        Primary Button
+      </label>
+
+      <input name="primary_button" type="text" class="form-control" id="" placeholder="Enter Primary Button" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="secondary_button" class="form-label">
+        Secondary Button
+      </label>
+
+      <input name="secondary_button" type="text" class="form-control" placeholder="Enter Secondary Button" id="">
+    </div>
+
+    <div class="mb-3">
       <label for="title_font" class="form-label">
         Title Font
       </label>
