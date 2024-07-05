@@ -68,6 +68,14 @@
                     background-color:{{ $theme->secondary_color }} !important;
                     border:1px solid {{ $theme->primary_color }};
                 }
+
+                .theme-primary-color{
+                    color:{{ $theme->primary_color }} !important;
+                }
+
+                .theme-secondary-color{
+                    color:{{ $theme->secondary_color }} !important;
+                }
             </style>
         @endif
     </head>

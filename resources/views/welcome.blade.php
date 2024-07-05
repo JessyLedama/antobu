@@ -66,7 +66,7 @@
 
                                     <div class="card-body">
 
-                                        <h3 class="card-text">
+                                        <h3 class="card-text theme-secondary-color">
                                             {{ ucwords($product->name) }}
                                         </h3>
 
@@ -79,12 +79,12 @@
                                         
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-body-secondary">
+                                        <small class="text-body-secondary theme-primary-color">
                                             KSh. {{ $product->price }}
                                         </small>
 
                                         <div class="btn-group">
-                                            <a href="{{ route('addToCart', $product->slug) }}" type="button" class="btn btn-sm btn-outline-secondary">
+                                            <a href="{{ route('addToCart', $product->slug) }}" type="button" class="btn btn-sm theme-primary-btn">
                                                 <span class="fa fa-cart-plus"></span>
                                                 Add to Cart
                                             </a>
