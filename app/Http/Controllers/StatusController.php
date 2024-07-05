@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Status;
+use App\Services\StatusService;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -12,7 +12,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $statuses = StatusService::statuses();
+
+        return view('admin.status.index', compact('statuses'));
     }
 
     /**
@@ -20,7 +22,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.status.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'unique:statuses'],
+        ]);
+
+        $status = StatusService::store($validated);
+
+        return redirect()->route('admin.status.index');
     }
 
     /**
