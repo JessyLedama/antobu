@@ -89,6 +89,13 @@
                 .theme-secondary-color{
                     color:{{ $theme->secondary_color }} !important;
                 }
+
+                .theme-input-form{
+                    border-left: none;
+                    border-right: none;
+                    border-top: none;
+                    border-bottom: 2px solid {{ $theme->secondary_color }};
+                }
             </style>
         @endif
     </head>

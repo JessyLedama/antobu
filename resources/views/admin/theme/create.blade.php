@@ -32,7 +32,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.theme.index') }}">
+    <a class="new-btn theme-secondary-btn" href="{{ route('admin.theme.index') }}">
       All Themes
     </a>
   </div>
@@ -50,102 +50,111 @@
   <form action="{{ route('admin.theme.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    <div class="mb-3">
-      <label for="name" class="form-label">
-        Theme Name
-      </label>
+    <div class="row">
+      <div class="mb-3 col-6">
+        <label for="name" class="form-label theme-secondary-color">
+          Theme Name
+        </label>
 
-      <input name="name" old="name" type="text" class="form-control" id="" placeholder="Enter Theme Name" required>
+        <input name="name" old="name" type="text" class="form-control theme-input-form" id="" placeholder="Theme Name" required>
+      </div>
+
+      <div class="mb-3 col-6">
+        <label for="favicon" class="form-label theme-secondary-color">
+          Website Icon (Favicon)
+        </label>
+
+        <input name="favicon" type="file" class="form-control theme-input-form" id="" required>
+      </div>
+
+      <div class="col-4">
+        <label for="primary_color" class="form-label theme-secondary-color">
+          Navigation Brand
+        </label>
+
+        <select name="navigation_brand" id="" class="mb-3 col-6 form-control theme-input-form" required>
+          <option value="">
+            
+          </option>
+
+          <option value="name">
+            Company Name
+          </option>
+
+          <option value="logo">
+            Company Logo
+          </option>
+          
+        </select>
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="primary_color" class="form-label theme-secondary-color">
+          Primary Color
+        </label>
+
+        <input name="primary_color" type="text" class="form-control theme-input-form" id="" placeholder="" required>
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="secondary_color" class="form-label theme-secondary-color">
+          Secondary Color
+        </label>
+
+        <input name="secondary_color" type="text" class="form-control theme-input-form" id="" placeholder="">
+      </div>
+
+      <div class="mb-3 col-6">
+        <label for="primary_button" class="form-label theme-secondary-color">
+          Primary Button
+        </label>
+
+        <input name="primary_button" type="text" class="form-control theme-input-form" id="" placeholder="" required>
+      </div>
+
+      <div class="mb-3 col-6">
+        <label for="secondary_button" class="form-label theme-secondary-color">
+          Secondary Button
+        </label>
+
+        <input name="secondary_button" type="text" class="form-control theme-input-form" placeholder="" id="">
+      </div>
+
+      <div class="mb-3 col-3">
+        <label for="title_font" class="form-label theme-secondary-color">
+          Title Font
+        </label>
+
+        <input name="title_font" type="text" class="form-control theme-input-form" id="">
+      </div>
+
+      <div class="mb-3 col-3">
+        <label for="content_font" class="form-label theme-secondary-color">
+          Content Font
+        </label>
+
+        <input name="content_font" type="text" class="form-control theme-input-form" id="">
+      </div>
+
+      <div class="mb-3 col-3">
+        <label for="header_color" class="form-label theme-secondary-color">
+          Header Color
+        </label>
+
+        <input name="header_color" type="text" class="form-control theme-input-form" id="">
+      </div>
+
+      <div class="mb-3 col-3">
+        <label for="footer_color" class="form-label theme-secondary-color">
+          Footer Color
+        </label>
+
+        <input name="footer_color" type="text" class="form-control theme-input-form" id="">
+      </div>
+
     </div>
 
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">
-        Website Icon (Favicon)
-      </label>
-
-      <input name="favicon" type="file" class="form-control" id="" required>
-    </div>
-
-    <select name="navigation_brand" id="" class="form-control" required>
-      <option value="">
-        Select a Navigation Brand
-      </option>
-
-      <option value="name">
-        Company Name
-      </option>
-
-      <option value="logo">
-        Company Logo
-      </option>
-      
-    </select>
-
-    <div class="mb-3">
-      <label for="primary_color" class="form-label">
-        Primary Color
-      </label>
-
-      <input name="primary_color" type="text" class="form-control" id="" placeholder="Enter Primary Color" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="secondary_color" class="form-label">
-        Secondary Color
-      </label>
-
-      <input name="secondary_color" type="text" class="form-control" id="">
-    </div>
-
-    <div class="mb-3">
-      <label for="primary_button" class="form-label">
-        Primary Button
-      </label>
-
-      <input name="primary_button" type="text" class="form-control" id="" placeholder="Enter Primary Button" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="secondary_button" class="form-label">
-        Secondary Button
-      </label>
-
-      <input name="secondary_button" type="text" class="form-control" placeholder="Enter Secondary Button" id="">
-    </div>
-
-    <div class="mb-3">
-      <label for="title_font" class="form-label">
-        Title Font
-      </label>
-
-      <input name="title_font" type="text" class="form-control" id="">
-    </div>
-
-    <div class="mb-3">
-      <label for="content_font" class="form-label">
-        Content Font
-      </label>
-
-      <input name="content_font" type="text" class="form-control" id="">
-    </div>
-
-    <div class="mb-3">
-      <label for="header_color" class="form-label">
-        Header Color
-      </label>
-
-      <input name="header_color" type="text" class="form-control" id="">
-    </div>
-
-    <div class="mb-3">
-      <label for="footer_color" class="form-label">
-        Footer Color
-      </label>
-
-      <input name="footer_color" type="text" class="form-control" id="">
-    </div>
-
-    <input type="submit" value="Save" class="new-btn">
+    <input type="submit" value="Save" class="new-btn theme-primary-btn">
   </form>
 </main>
 @endsection
