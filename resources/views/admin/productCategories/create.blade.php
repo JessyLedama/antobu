@@ -30,6 +30,29 @@
     </div>
   </div>
 
+  <!-- breadcrumbs -->
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+        <li class="breadcrumb-item">
+          <a href="{{ route('dashboard') }}">
+            Dashboard
+          </a>
+        </li>
+
+        <li class="breadcrumb-item">
+          <a href="{{ route('admin.productCategory.index') }}">
+            Product Categories
+          </a>
+        </li>
+        
+        <li class="breadcrumb-item active" aria-current="page">
+          Create Product Category
+        </li>
+      </ol>
+    </nav>
+  </div>
+
   <div class="btn-container">
     <a class="new-btn" href="{{ route('admin.productCategory.index') }}">
       All Product Categories

@@ -31,6 +31,7 @@
     </div>
   </div>
 
+  <!-- breadcrumbs -->
   <div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">

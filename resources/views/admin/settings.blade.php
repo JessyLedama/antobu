@@ -13,6 +13,23 @@
         Settings
       </h1>
     </div>
+
+    <!-- breadcrumbs -->
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+          <li class="breadcrumb-item">
+            <a href="{{ route('dashboard') }}">
+              Dashboard
+            </a>
+          </li>
+          
+          <li class="breadcrumb-item active" aria-current="page">
+            Settings
+          </li>
+        </ol>
+      </nav>
+    </div>
     
     <div class="container">
       <div class="row  row-cols-1 row-cols-md-3 g-4">

@@ -14,104 +14,114 @@
     </h1>
   </div>
   
+  <!-- breadcrumbs -->
+  <div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+        <li class="breadcrumb-item active" aria-current="page">
+          Dashboard
+        </li>
+      </ol>
+    </nav>
+  </div>
     
-    <div class="container">
-        <div class="row  row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <a href="{{ route('admin.order.index') }}">
-                    <h5 class="card-title">
-                        Orders
+  <div class="container">
+      <div class="row  row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <a href="{{ route('admin.order.index') }}">
+                  <h5 class="card-title">
+                      Orders
 
-                        <span class="float-right">
-                            {{ $counts->orders_count }}
-                        </span>
-                    </h5>
-                </a>
-              </div>
+                      <span class="float-right">
+                          {{ $counts->orders_count }}
+                      </span>
+                  </h5>
+              </a>
             </div>
           </div>
-
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <a href="{{ route('admin.product.index') }}">
-                    <h5 class="card-title">
-                        Products
-
-                        <span class="float-right">
-                            {{ $counts->products_count }}
-                        </span>
-                    </h5>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <a href="{{ route('admin.productCategory.index') }}">
-                    <h5 class="card-title">
-                        Product Categories
-
-                        <span class="float-right">
-                            {{ $counts->product_categories_count }}
-                        </span>
-                    </h5>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                    Product Categories
-
-                    <span class="float-right">
-                        {{ $counts->product_categories_count }}
-                    </span>
-                </h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                    Product Categories
-
-                    <span class="float-right">
-                        {{ $counts->product_categories_count }}
-                    </span>
-                </h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                    Product Categories
-
-                    <span class="float-right">
-                        {{ $counts->product_categories_count }}
-                    </span>
-                </h5>
-              </div>
-            </div>
-          </div>
-
-          <canvas class="chart" id="ordersChart"></canvas>
-
-          <canvas class="chart" id="productsChart"></canvas>
         </div>
-    </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <a href="{{ route('admin.product.index') }}">
+                  <h5 class="card-title">
+                      Products
+
+                      <span class="float-right">
+                          {{ $counts->products_count }}
+                      </span>
+                  </h5>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <a href="{{ route('admin.productCategory.index') }}">
+                  <h5 class="card-title">
+                      Product Categories
+
+                      <span class="float-right">
+                          {{ $counts->product_categories_count }}
+                      </span>
+                  </h5>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                  Product Categories
+
+                  <span class="float-right">
+                      {{ $counts->product_categories_count }}
+                  </span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                  Product Categories
+
+                  <span class="float-right">
+                      {{ $counts->product_categories_count }}
+                  </span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                  Product Categories
+
+                  <span class="float-right">
+                      {{ $counts->product_categories_count }}
+                  </span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <canvas class="chart" id="ordersChart"></canvas>
+
+        <canvas class="chart" id="productsChart"></canvas>
+      </div>
+  </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
