@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Services\ProductCategoryService;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ProductsExport;
+use App\Services\ExportDataService;
 
 class ProductController extends Controller
 {
@@ -93,7 +93,7 @@ class ProductController extends Controller
      */
     public function xlsx()
     {
-        $file = Excel::download(new ProductsExport, 'products.xlsx');
+        $file = ExportDataService::productsXlsx();
 
         return $file;
     }
@@ -103,7 +103,7 @@ class ProductController extends Controller
      */
     public function csv(Request $request)
     {
-        $file = Excel::download(new ProductsExport, 'products.csv');
+        $file = ExportDataService::productsCsv();
 
         return $file;
     }

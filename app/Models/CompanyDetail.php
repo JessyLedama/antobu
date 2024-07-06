@@ -13,6 +13,10 @@ class CompanyDetail extends Model
         'name', 'slug', 'address', 'website', 'phone', 'email', 'tax_id', 'logo', 'country', 'status_id', 'user_id',
     ];
 
+    protected $hidden = [
+        'slug'
+    ];
+
     /**
      *  Company belongsTo status
      */

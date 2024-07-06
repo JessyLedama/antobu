@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\CompanyDetail;
 use App\Services\SlugService;
+use App\Services\StatusService;
 
 /**
  *  This service does most of the actual transactions for CompanyDetail model.
@@ -17,7 +18,9 @@ class CompanyService
      */  
     public static function company()
     {
-        $company = CompanyDetail::first();
+        $status = StatusService::active();
+
+        $company = CompanyDetail::where('status_id', $status->id)->first();
 
         return $company;
     }
@@ -117,6 +120,25 @@ class CompanyService
         $status = StatusService::active();
 
         $company = CompanyDetail::where('status_id', $status->id)->first();
+
+        return $company;
+    }
+
+    /**
+     *  Update an existing company
+     */
+    public static function update($validated, $slug)
+    {
+        $company = self::searchBySlug($slug);
+
+        if(isset($validated['logo']))
+        {
+            $logo = $validated['logo']->store('companyImages', ['disk' => 'public']);
+
+            $validated['logo'] = $logo;
+        }
+
+        $company->update($validated);
 
         return $company;
     }

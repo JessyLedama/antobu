@@ -99,6 +99,10 @@
           <th scope="col">
             Status
           </th>
+          
+          <th scope="col">
+            Action
+          </th>
         </tr>
       </thead>
       @if($companies->count() > 0)
@@ -129,6 +133,13 @@
 
             <td>
               {{ ucwords($company->status->name) }}
+            </td>
+
+            <td>
+              <a href="{{ route('admin.company.edit', $company->slug) }}">
+                <span class="fa fa-pencil"></span>
+                Edit
+              </a>
             </td>
           </tr>
         @endforeach

@@ -1,0 +1,11 @@
+.dash-company-name{
+    font-size: 35px;
+}
+
+.company-logo{
+    max-width: 10rem;
+}
+
+.right{
+    text-align: right !important;
+}

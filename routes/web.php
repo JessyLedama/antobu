@@ -125,9 +125,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             
             Route::post('store', [CompanyDetailController::class, 'store'])->name('admin.company.store');
             
-            Route::get('edit', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
+            Route::get('edit/{slug}', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
             
-            Route::post('update', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+            Route::post('update/{slug}', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+
+            Route::get('{slug}', [CompanyDetailController::class, 'show'])->name('admin.company.show');
+
+            Route::get('xlsx', [CompanyDetailController::class, 'xlsx'])->name('admin.company.xlsx');
+
+            Route::get('csv', [CompanyDetailController::class, 'csv'])->name('admin.company.csv');
         });
 
         // STATUS

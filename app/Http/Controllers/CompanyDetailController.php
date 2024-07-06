@@ -69,25 +69,44 @@ class CompanyDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CompanyDetail $companyDetail)
+    public function show($slug)
     {
-        //
+        $company = CompanyService::searchBySlug($slug);
+
+        return view('admin.company.show', compact('company'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CompanyDetail $companyDetail)
+    public function edit($slug)
     {
-        //
+        $company = CompanyService::searchBySlug($slug);
+
+        $countries = InternationalizationService::countries();
+
+        return view('admin.company.edit', compact('company', 'countries'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CompanyDetail $companyDetail)
+    public function update(Request $request, $slug)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'address' => ['string'],
+            'website' => ['url'],
+            'phone' => ['string'],
+            'email' => ['email'],
+            'tax_id' => ['string'],
+            'logo' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'country' => ['string'],
+        ]);
+
+        $company = CompanyService::update($validated, $slug);
+        
+        return redirect()->route('admin.company.show', $company->slug);
     }
 
     /**
@@ -96,5 +115,27 @@ class CompanyDetailController extends Controller
     public function destroy(CompanyDetail $companyDetail)
     {
         //
+    }
+
+    /**
+     *  Export xlsx
+     */
+    public function xlsx()
+    {
+        dd('we here');
+
+        $file = ExportDataService::companyXlsx();
+
+        return $file;
+    }
+
+    /**
+     *  Export csv
+     */
+    public function csv()
+    {
+        $file = CompanyDetailExport::companyCsv();
+
+        return $file;
     }
 }
