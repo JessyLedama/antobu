@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CompanyDetail;
 use Illuminate\Http\Request;
 use App\Services\CompanyService;
+use App\Services\InternationalizationService;
 
 class CompanyDetailController extends Controller
 {
@@ -23,7 +24,7 @@ class CompanyDetailController extends Controller
      */
     public function create()
     {
-        $countries = json_decode(file_get_contents(public_path('countries/countries.json')), true);
+        $countries = InternationalizationService::countries();
 
         return view('admin.company.create', compact('countries'));
     }
