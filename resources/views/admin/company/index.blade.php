@@ -15,11 +15,11 @@
     
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <a href="{{ route('admin.product.xlsx') }}" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.company.xlsx') }}" class="btn btn-sm btn-outline-secondary">
           XLSX
         </a>
 
-        <a href="{{ route('admin.product.csv') }}" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.company.csv') }}" class="btn btn-sm btn-outline-secondary">
           CSV
         </a>
       </div>
