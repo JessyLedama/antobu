@@ -16,6 +16,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 
@@ -164,6 +165,23 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
             Route::get('show/{slug}', [ThemeController::class, 'show'])->name('admin.theme.show');
 
             Route::get('activate/{slug}', [ThemeController::class, 'activate'])->name('admin.theme.activate');
+        });
+
+        // ROLES
+        Route::prefix('roles')->group(function(){
+            Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
+
+            Route::get('create', [RoleController::class, 'create'])->name('admin.role.create');
+
+            Route::post('store', [RoleController::class, 'store'])->name('admin.role.store');
+
+            Route::get('edit/{slug}', [RoleController::class, 'edit'])->name('admin.role.edit');
+
+            Route::post('update/{slug}', [RoleController::class, 'update'])->name('admin.role.update');
+
+            Route::get('show/{slug}', [RoleController::class, 'show'])->name('admin.role.show');
+
+            Route::get('activate/{slug}', [RoleController::class, 'activate'])->name('admin.role.activate');
         });
     });
 });

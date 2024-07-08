@@ -26,4 +26,12 @@ class Status extends Model
     {
         return $this->hasMany(CompanyDetail::class);
     }
+
+    /**
+     *  A status hasMany roles
+     */
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
 }
