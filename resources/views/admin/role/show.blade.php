@@ -101,31 +101,31 @@
       </thead>
 
       <tbody>
-          <tr>
-            <td class="product-text">
-              <span >
-                {{ ucfirst($role->name) }}
-              </span>
-            </td>
+        <tr>
+          <td class="product-text">
+            <span >
+              {{ ucfirst($role->name) }}
+            </span>
+          </td>
 
-            <td>
-              {{ ucwords($role->status->name) }}
-            </td>
+          <td>
+            {{ ucwords($role->status->name) }}
+          </td>
 
-            <td>
-              <a href="{{ route('admin.role.edit', $role->slug) }}">
-                <span class="fa fa-pencil"></span>
-                Edit
+          <td>
+            <a href="{{ route('admin.role.edit', $role->slug) }}">
+              <span class="fa fa-pencil"></span>
+              Edit
+            </a>
+
+            @if($role->status->name == 'inactive')
+              <a href="{{ route('admin.role.activate', $role->slug) }}" class="btn theme-primary-btn">
+                <!-- <span class="fa fa-pencil"></span> -->
+                Activate
               </a>
-
-              @if($role->status->name == 'inactive')
-                <a href="{{ route('admin.role.activate', $role->slug) }}" class="btn theme-primary-btn">
-                  <!-- <span class="fa fa-pencil"></span> -->
-                  Activate
-                </a>
-              @endif
-            </td>
-          </tr>
+            @endif
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

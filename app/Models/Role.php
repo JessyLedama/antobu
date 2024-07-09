@@ -18,4 +18,20 @@ class Role extends Model
     {
         return $this->belongsTo(Status::class, 'status_id');
     }
+
+    /**
+     *  A role belongsToMany permissions.
+     */
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
+    /**
+     *  A role belongsToMany users.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

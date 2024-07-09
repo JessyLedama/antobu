@@ -40,148 +40,190 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
     Route::post('add-to-wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
-});
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
+    Route::prefix('admin')->group(function(){
     
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // PRODUCTS
-    Route::prefix('products')->group(function(){
-
-        Route::get('/', [ProductController::class, 'index'])->name('admin.product.index');
-
-        Route::get('create', [ProductController::class, 'create'])->name('admin.product.create');
-        
-        Route::post('store', [ProductController::class, 'store'])->name('admin.product.store');
-        
-        Route::get('edit', [ProductController::class, 'edit'])->name('admin.product.edit');
-
-        Route::post('update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
-
-        Route::post('update-more-images/{id}', [ProductController::class, 'updateMoreImages'])->name('admin.product.updateMoreImages');
-
-        Route::post('update-description/{id}', [ProductController::class, 'updateDescription'])->name('admin.product.updateDescription');
-
-        Route::post('update-color/{id}', [ProductController::class, 'updateColor'])->name('admin.product.updateColor');
-
-        Route::post('update-material/{id}', [ProductController::class, 'updateMaterial'])->name('admin.product.updateMaterial');
-
-        Route::get('xlsx', [ProductController::class, 'xlsx'])->name('admin.product.xlsx');
-
-        Route::get('csv', [ProductController::class, 'csv'])->name('admin.product.csv');
-    });
-
-    // PRODUCT CATEGORIES
-    Route::prefix('product-categories')->group(function(){
-        Route::get('/', [ProductCategoryController::class, 'index'])->name('admin.productCategory.index');
-        
-        Route::get('create', [ProductCategoryController::class, 'create'])->name('admin.productCategory.create');
-        
-        Route::post('store', [ProductCategoryController::class, 'store'])->name('admin.productCategory.store');
-        
-        Route::get('edit', [ProductCategoryController::class, 'edit'])->name('admin.productCategory.edit');
-
-        Route::post('update', [ProductCategoryController::class, 'update'])->name('admin.productCategory.update');
-    });
-
-    // ORDERS
-    Route::prefix('orders')->group(function(){
-
-        Route::get('/', [OrderController::class, 'index'])->name('admin.order.index');
-    });
-
-    // SLIDES
-    Route::prefix('slides')->group(function(){
-
-        Route::get('/', [SlideshowController::class, 'index'])->name('admin.slide.index');
-
-        Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
-
-        Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
-
-        Route::get('edit/{slug}', [SlideshowController::class, 'edit'])->name('admin.slide.edit');
-    });
-
-    // NEWSLETTERS
-    Route::prefix('newsletters')->group(function(){
-
-        Route::get('/', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
-
-        Route::get('create', [NewsletterController::class, 'create'])->name('admin.newsletter.create');
-
-        Route::post('store', [NewsletterController::class, 'store'])->name('admin.newsletter.store');
-    });
-
-    // SETTINGS
-    Route::prefix('settings')->group(function(){
-
-        Route::get('/', [SettingsController::class, 'index'])->name('admin.settings');
-
-        // Company Details
-        Route::prefix('company')->group(function(){
-            Route::get('', [CompanyDetailController::class, 'index'])->name('admin.company.index');
+        // CREATE GROUP
+        Route::middleware('permission:create-model')->group(function(){
             
-            Route::get('create', [CompanyDetailController::class, 'create'])->name('admin.company.create');
+            // PRODUCTS
+            Route::prefix('products')->group(function(){
+                Route::get('create', [ProductController::class, 'create'])->name('admin.product.create');
             
-            Route::post('store', [CompanyDetailController::class, 'store'])->name('admin.company.store');
-            
-            Route::get('edit/{slug}', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
-            
-            Route::post('update/{slug}', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+                Route::post('store', [ProductController::class, 'store'])->name('admin.product.store');
+            });
 
-            Route::get('{slug}', [CompanyDetailController::class, 'show'])->name('admin.company.show');
+            // PRODUCT CATEGORIES
+            Route::prefix('product-categories')->group(function(){
+                
+                Route::get('create', [ProductCategoryController::class, 'create'])->name('admin.productCategory.create');
+                
+                Route::post('store', [ProductCategoryController::class, 'store'])->name('admin.productCategory.store');
+            });
 
-            Route::get('xlsx', [CompanyDetailController::class, 'xlsx'])->name('admin.company.xlsx');
+             // SLIDES
+            Route::prefix('slides')->group(function(){
+                
+                Route::get('create', [SlideshowController::class, 'create'])->name('admin.slide.create');
+        
+                Route::post('store', [SlideshowController::class, 'store'])->name('admin.slide.store');
+            });
 
-            Route::get('csv', [CompanyDetailController::class, 'csv'])->name('admin.company.csv');
+            // NEWSLETTERS
+            Route::prefix('newsletters')->group(function(){
+
+                Route::get('create', [NewsletterController::class, 'create'])->name('admin.newsletter.create');
+        
+                Route::post('store', [NewsletterController::class, 'store'])->name('admin.newsletter.store');
+            });
+
+            // Company Details
+            Route::prefix('settings/company')->group(function(){
+                
+                Route::get('create', [CompanyDetailController::class, 'create'])->name('admin.company.create');
+                
+                Route::post('store', [CompanyDetailController::class, 'store'])->name('admin.company.store');
+            });
+
+            // STATUS
+            Route::prefix('status')->group(function(){
+                                
+                Route::get('create', [StatusController::class, 'create'])->name('admin.status.create');
+                
+                Route::post('store', [StatusController::class, 'store'])->name('admin.status.store');
+            });
+
+            // THEME
+            Route::prefix('theme')->group(function(){
+                
+                Route::get('create', [ThemeController::class, 'create'])->name('admin.theme.create');
+    
+                Route::post('store', [ThemeController::class, 'store'])->name('admin.theme.store');
+            });
+
+            // ROLES
+            Route::prefix('roles')->group(function(){
+                
+                Route::get('create', [RoleController::class, 'create'])->name('admin.role.create');
+    
+                Route::post('store', [RoleController::class, 'store'])->name('admin.role.store');
+    
+                Route::get('activate/{slug}', [RoleController::class, 'activate'])->name('admin.role.activate');
+            });
         });
 
-        // STATUS
-        Route::prefix('status')->group(function(){
-            Route::get('', [StatusController::class, 'index'])->name('admin.status.index');
+        // EDIT GROUP
+        Route::middleware('permission:edit-model')->group(function(){
+
+            // PRODUCTS
+            Route::prefix('products')->group(function(){
+                Route::get('edit', [ProductController::class, 'edit'])->name('admin.product.edit');
+    
+                Route::post('update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
+        
+                Route::post('update-more-images/{id}', [ProductController::class, 'updateMoreImages'])->name('admin.product.updateMoreImages');
+        
+                Route::post('update-description/{id}', [ProductController::class, 'updateDescription'])->name('admin.product.updateDescription');
+        
+                Route::post('update-color/{id}', [ProductController::class, 'updateColor'])->name('admin.product.updateColor');
+        
+                Route::post('update-material/{id}', [ProductController::class, 'updateMaterial'])->name('admin.product.updateMaterial');
+            });
+
+            // PRODUCT CATEGORIES
+            Route::prefix('product-categories')->group(function(){
+                                
+                Route::get('edit', [ProductCategoryController::class, 'edit'])->name('admin.productCategory.edit');
+        
+                Route::post('update', [ProductCategoryController::class, 'update'])->name('admin.productCategory.update');
+            });
+
+            // SLIDES
+            Route::prefix('slides')->group(function(){
+        
+                Route::get('edit/{slug}', [SlideshowController::class, 'edit'])->name('admin.slide.edit');
+            });
+
+            // Company Details
+            Route::prefix('settings/company')->group(function(){
+                
+                Route::get('edit/{slug}', [CompanyDetailController::class, 'edit'])->name('admin.company.edit');
+                
+                Route::post('update/{slug}', [CompanyDetailController::class, 'update'])->name('admin.company.update');
+            });
+
+            // STATUS
+            Route::prefix('status')->group(function(){
+                
+                Route::get('edit', [StatusController::class, 'edit'])->name('admin.status.edit');
+                
+                Route::post('update', [StatusController::class, 'update'])->name('admin.status.update');
+            });
+
+            // THEME
+            Route::prefix('theme')->group(function(){
             
-            Route::get('create', [StatusController::class, 'create'])->name('admin.status.create');
-            
-            Route::post('store', [StatusController::class, 'store'])->name('admin.status.store');
-            
-            Route::get('edit', [StatusController::class, 'edit'])->name('admin.status.edit');
-            
-            Route::post('update', [StatusController::class, 'update'])->name('admin.status.update');
+                Route::get('edit/{slug}', [ThemeController::class, 'edit'])->name('admin.theme.edit');
+    
+                Route::post('update/{slug}', [ThemeController::class, 'update'])->name('admin.theme.update');
+            });
+
+            // ROLES
+            Route::prefix('roles')->group(function(){
+                
+                Route::get('edit/{slug}', [RoleController::class, 'edit'])->name('admin.role.edit');
+    
+                Route::post('update/{slug}', [RoleController::class, 'update'])->name('admin.role.update');
+            });
         });
 
-        // THEME
-        Route::prefix('theme')->group(function(){
-            Route::get('/', [ThemeController::class, 'index'])->name('admin.theme.index');
-
-            Route::get('create', [ThemeController::class, 'create'])->name('admin.theme.create');
-
-            Route::post('store', [ThemeController::class, 'store'])->name('admin.theme.store');
-
-            Route::get('edit/{slug}', [ThemeController::class, 'edit'])->name('admin.theme.edit');
-
-            Route::post('update/{slug}', [ThemeController::class, 'update'])->name('admin.theme.update');
-
-            Route::get('show/{slug}', [ThemeController::class, 'show'])->name('admin.theme.show');
-
-            Route::get('activate/{slug}', [ThemeController::class, 'activate'])->name('admin.theme.activate');
+        // DELETE GROUP
+        Route::middleware('permission:delete-model')->group(function(){
+            Route::post('/delete', [ProductController::class, 'destroy'])->name('delete.product');
         });
 
-        // ROLES
-        Route::prefix('roles')->group(function(){
-            Route::get('/', [RoleController::class, 'index'])->name('admin.role.index');
+        // VIEW GROUP
+        Route::middleware('permission:view-model')->group(function(){
+            
+            Route::get('product-categories', [ProductCategoryController::class, 'index'])->name('admin.productCategory.index');
 
-            Route::get('create', [RoleController::class, 'create'])->name('admin.role.create');
+            Route::get('products', [ProductController::class, 'index'])->name('product.index');
 
-            Route::post('store', [RoleController::class, 'store'])->name('admin.role.store');
+            Route::get('orders', [OrderController::class, 'index'])->name('admin.order.index');
 
-            Route::get('edit/{slug}', [RoleController::class, 'edit'])->name('admin.role.edit');
+            Route::get('slideshows', [SlideshowController::class, 'index'])->name('admin.slide.index');
 
-            Route::post('update/{slug}', [RoleController::class, 'update'])->name('admin.role.update');
+            Route::get('newsletters', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
 
-            Route::get('show/{slug}', [RoleController::class, 'show'])->name('admin.role.show');
+            Route::get('settings', [SettingsController::class, 'index'])->name('admin.settings');
 
-            Route::get('activate/{slug}', [RoleController::class, 'activate'])->name('admin.role.activate');
+            Route::get('settings/companies', [CompanyDetailController::class, 'index'])->name('admin.company.index');
+            
+            Route::get('settings/companies/{slug}', [CompanyDetailController::class, 'show'])->name('admin.company.show');
+
+            Route::get('settings/statuses', [StatusController::class, 'index'])->name('admin.status.index');
+
+            Route::get('settings/themes', [ThemeController::class, 'index'])->name('admin.theme.index');
+
+            Route::get('settings/themes/{slug}', [ThemeController::class, 'show'])->name('admin.theme.show');
+
+            Route::get('settings/roles', [RoleController::class, 'index'])->name('admin.role.index');
+
+            Route::get('settings/roles/{slug}', [RoleController::class, 'show'])->name('admin.role.show');
+
+        });
+
+        // EXPORT GROUP
+        Route::middleware('permission:export-model')->group(function(){
+            Route::get('products/xlsx', [ProductController::class, 'xlsx'])->name('admin.product.xlsx');
+    
+            Route::get('products/csv', [ProductController::class, 'csv'])->name('admin.product.csv');
+
+            Route::get('companies/xlsx', [CompanyDetailController::class, 'xlsx'])->name('admin.company.xlsx');
+    
+            Route::get('companies/csv', [CompanyDetailController::class, 'csv'])->name('admin.company.csv');
         });
     });
 });
