@@ -124,7 +124,7 @@
   </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('chart.js/package/dist/chart.umd.js') }}"></script>
 
 <script>
   const ctx = document.getElementById('ordersChart');
