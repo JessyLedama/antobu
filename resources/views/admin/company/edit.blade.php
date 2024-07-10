@@ -60,7 +60,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.company.index') }}">
+    <a class="new-btn theme-secondary-btn" href="{{ route('admin.company.index') }}">
       All Companies
     </a>
   </div>
@@ -78,91 +78,93 @@
   <form action="{{ route('admin.company.update', $company->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    <div class="mb-3">
-      <label for="name" class="form-label">
-        Company Name
-      </label>
+    <div class="row">
+      <div class="mb-3 col-8">
+        <label for="name" class="form-label theme-secondary-color">
+          Company Name
+        </label>
 
-      <input name="name" type="text" class="form-control" id="" placeholder="Enter Company Name" value="{{ $company->name }}" required>
+        <input name="name" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Name" value="{{ $company->name }}" required>
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="logo" class="form-label theme-secondary-color">
+          Company Logo
+        </label>
+
+        <input name="logo" type="file" class="form-control theme-input-form" id="">
+        <img class="current-img" src="{{ asset('storage/'.$company->logo) }}" alt="">
+        <small>
+          Current Logo
+        </small>
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="address" class="form-label theme-secondary-color">
+          Address
+        </label>
+
+        <input name="address" type="text" class="form-control theme-input-form" value="{{ $company->address }}" id="" placeholder="Enter Company Address">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="phone" class="form-label theme-secondary-color">
+          Phone
+        </label>
+
+        <input name="phone" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Phone" value="{{ $company->phone }}">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="country" class="form-label theme-secondary-color">
+          Country
+        </label>
+
+        <select name="country" id="" class="form-control theme-input-form">
+          @if(isset($company->country))
+            <option value="{{ $company->country }}">
+              {{ ucwords($company->country) }}
+            </option>
+          @else
+            <option value="">
+              Select a country
+            </option>
+          @endif
+
+          @foreach($countries as $country)
+            <option value="{{ $country['name']['common'] }}">
+              {{ ucwords($country['name']['common']) }}
+            </option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="mb-3 col-4" >
+        <label for="website" class="form-label theme-secondary-color">
+          Website
+        </label>
+
+        <input name="website" type="url" class="form-control theme-input-form" id="" placeholder="Enter Company Website" value="{{ $company->website }}">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="email" class="form-label theme-secondary-color">
+          Email
+        </label>
+
+        <input name="email" type="email" class="form-control theme-input-form" id="" placeholder="Enter Company Email" value="{{ $company->email }}">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="tax_id" class="form-label theme-secondary-color">
+          Tax ID
+        </label>
+
+        <input name="tax_id" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Tax ID" value="{{ $company->tax_id }}">
+      </div>
     </div>
 
-    <div class="mb-3">
-      <label for="logo" class="form-label">
-        Company Logo
-      </label>
-
-      <input name="logo" type="file" class="form-control" id="">
-      <img class="current-img" src="{{ asset('storage/'.$company->logo) }}" alt="">
-      <small>
-        Current Logo
-      </small>
-    </div>
-
-    <div class="mb-3">
-      <label for="address" class="form-label">
-        Address
-      </label>
-
-      <input name="address" type="text" class="form-control" value="{{ $company->address }}" id="" placeholder="Enter Company Address">
-    </div>
-
-    <div class="mb-3">
-      <label for="website" class="form-label">
-        Website
-      </label>
-
-      <input name="website" type="url" class="form-control" id="" placeholder="Enter Company Website" value="{{ $company->website }}">
-    </div>
-
-    <div class="mb-3">
-      <label for="phone" class="form-label">
-        Phone
-      </label>
-
-      <input name="phone" type="text" class="form-control" id="" placeholder="Enter Company Phone" value="{{ $company->phone }}">
-    </div>
-
-    <div class="mb-3">
-      <label for="email" class="form-label">
-        Email
-      </label>
-
-      <input name="email" type="email" class="form-control" id="" placeholder="Enter Company Email" value="{{ $company->email }}">
-    </div>
-
-    <div class="mb-3">
-      <label for="tax_id" class="form-label">
-        Tax ID
-      </label>
-
-      <input name="tax_id" type="text" class="form-control" id="" placeholder="Enter Company Tax ID" value="{{ $company->tax_id }}">
-    </div>
-
-    <div class="mb-3">
-      <label for="country" class="form-label">
-        Country
-      </label>
-
-      <select name="country" id="" class="form-control">
-        @if(isset($company->country))
-          <option value="{{ $company->country }}">
-            {{ ucwords($company->country) }}
-          </option>
-        @else
-          <option value="">
-            Select a country
-          </option>
-        @endif
-
-        @foreach($countries as $country)
-          <option value="{{ $country['name']['common'] }}">
-            {{ ucwords($country['name']['common']) }}
-          </option>
-        @endforeach
-      </select>
-    </div>
-
-    <input type="submit" value="Save" class="new-btn">
+    <input type="submit" value="Save" class="new-btn theme-primary-btn">
   </form>
 </main>
 @endsection

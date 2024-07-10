@@ -54,7 +54,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.company.index') }}">
+    <a class="new-btn theme-secondary-btn" href="{{ route('admin.company.index') }}">
       All Companies
     </a>
   </div>
@@ -72,81 +72,83 @@
   <form action="{{ route('admin.company.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
-    <div class="mb-3">
-      <label for="name" class="form-label">
-        Company Name
-      </label>
+    <div class="row">
+      <div class="mb-3 col-8">
+        <label for="name" class="form-label theme-secondary-color">
+          Company Name
+        </label>
 
-      <input name="name" type="text" class="form-control" id="" placeholder="Enter Company Name" required>
-    </div>
+        <input name="name" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Name" required>
+      </div>
 
-    <div class="mb-3">
-      <label for="logo" class="form-label">
-        Company Logo
-      </label>
+      <div class="mb-3 col-4">
+        <label for="logo" class="form-label theme-secondary-color">
+          Company Logo
+        </label>
 
-      <input name="logo" type="file" class="form-control" id="">
-    </div>
+        <input name="logo" type="file" class="form-control theme-input-form" id="">
+      </div>
 
-    <div class="mb-3">
-      <label for="address" class="form-label">
-        Address
-      </label>
+      <div class="mb-3 col-4">
+        <label for="address" class="form-label theme-secondary-color">
+          Address
+        </label>
 
-      <input name="address" type="text" class="form-control" id="" placeholder="Enter Company Address">
-    </div>
+        <input name="address" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Address">
+      </div>
 
-    <div class="mb-3">
-      <label for="website" class="form-label">
-        Website
-      </label>
+      <div class="mb-3 col-4">
+        <label for="phone" class="form-label theme-secondary-color">
+          Phone
+        </label>
 
-      <input name="website" type="url" class="form-control" id="" placeholder="Enter Company Website">
-    </div>
+        <input name="phone" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Phone">
+      </div>
 
-    <div class="mb-3">
-      <label for="phone" class="form-label">
-        Phone
-      </label>
+      <div class="mb-3 col-4">
+        <label for="country" class="form-label theme-secondary-color">
+          Country
+        </label>
 
-      <input name="phone" type="text" class="form-control" id="" placeholder="Enter Company Phone">
-    </div>
-
-    <div class="mb-3">
-      <label for="email" class="form-label">
-        Email
-      </label>
-
-      <input name="email" type="email" class="form-control" id="" placeholder="Enter Company Email">
-    </div>
-
-    <div class="mb-3">
-      <label for="tax_id" class="form-label">
-        Tax ID
-      </label>
-
-      <input name="tax_id" type="text" class="form-control" id="" placeholder="Enter Company Tax ID">
-    </div>
-
-    <div class="mb-3">
-      <label for="country" class="form-label">
-        Country
-      </label>
-
-      <select name="country" id="" class="form-control">
-        <option value="">
-          Select a country
-        </option>
-
-        @foreach($countries as $country)
-          <option value="{{ $country['name']['common'] }}">
-            {{ ucwords($country['name']['common']) }}
+        <select name="country" id="" class="form-control theme-input-form">
+          <option value="">
+            Select a country
           </option>
-        @endforeach
-      </select>
+
+          @foreach($countries as $country)
+            <option value="{{ $country['name']['common'] }}">
+              {{ ucwords($country['name']['common']) }}
+            </option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="website" class="form-label theme-secondary-color">
+          Website
+        </label>
+
+        <input name="website" type="url" class="form-control theme-input-form" id="" placeholder="Enter Company Website">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="email" class="form-label theme-secondary-color">
+          Email
+        </label>
+
+        <input name="email" type="email" class="form-control theme-input-form" id="" placeholder="Enter Company Email">
+      </div>
+
+      <div class="mb-3 col-4">
+        <label for="tax_id" class="form-label theme-secondary-color">
+          Tax ID
+        </label>
+
+        <input name="tax_id" type="text" class="form-control theme-input-form" id="" placeholder="Enter Company Tax ID">
+      </div>
     </div>
 
-    <input type="submit" value="Save" class="new-btn">
+    <input type="submit" value="Save" class="new-btn theme-primary-btn">
   </form>
 </main>
 @endsection

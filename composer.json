@@ -1,9 +1,22 @@
 {
-    "name": "laravel/laravel",
+    "name": "jessyledama/laravel-ecommerce",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A complete ecommerce application built with Laravel.",
+    "keywords": ["laravel-ecommerce", "ecommerce", "laravel", "laravel-erp", "erp"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Jessy Ledama",
+            "email": "ledama@simitechnologies.co.ke"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:jessyledama/laravel-ecommerce.git"
+        }
+    ],
+    
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
