@@ -26,7 +26,13 @@ class ProductService
 
         $image = $validated['image']->store('productImages', ['disk' => 'public']);
 
-        $digitalAsset = $validated['digital_asset']->store('digitalAssets', ['disk' => 'public']);
+        if(isset($validated['digital_asset']))
+        {
+            $digitalAsset = $validated['digital_asset']->store('digitalAssets', ['disk' => 'public']);
+
+            $validated['digital_asset'] = $digitalAsset;
+        }
+        
 
         $status = StatusService::inactive();
 
@@ -35,7 +41,6 @@ class ProductService
             'slug' => $slug,
             'price' => $validated['price'],
             'image' => $image,
-            'digital_asset' => $digitalAsset,
             'user_id' => $validated['user_id'],
             'status_id' => $status->id,
             'product_category_id' => $validated['product_category_id'],

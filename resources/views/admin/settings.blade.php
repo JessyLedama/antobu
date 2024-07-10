@@ -52,7 +52,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <a href="{{ route('admin.product.index') }}">
+              <a href="{{ route('admin.user.index') }}">
                   <h5 class="card-title">
                       Users
 
@@ -117,10 +117,10 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
-                  Product Categories
+                  Roles & Permissions
 
                   <span class="float-right">
-                      {{ $counts->product_categories_count }}
+                      {{ $counts->roles_count }}
                   </span>
               </h5>
             </div>

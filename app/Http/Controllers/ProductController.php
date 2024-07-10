@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         session()->flash('success', 'Your product has been stored.');
 
-        return redirect()->route('admin.product.index');
+        return redirect()->route('product.index');
     }
 
     /**

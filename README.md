@@ -1,9 +1,10 @@
 ## About Laravel Ecommerce
 
-This project aims at creating a starter pack for building ecommerce applications 
-with Laravel. This comes from a personal need, first and foremost. I have had to build ecommerce platforms severally, and the process of redoing the same thing with just minimal tweaks triggered me to build this as a scaffold that I can use to quickly build ecommerce apps.
+At this time, this project is a complete ecommerce application built with Laravel. When you run this application, you can configure a company's name, logo, primary color, secondary color, whether on the navbar you want the logo or the company logo, and more configurations in the settings.
 
-After Ecommerce is fully implemented, I will begin adding ERP features to it. Essentially, the goal with this system is to build something similar to OdooERP. 
+This comes from a personal need, first and foremost. I have had to build ecommerce platforms severally, and the process of redoing the same thing with just minimal tweaks triggered me to build this as a scaffold that I can use to quickly build ecommerce apps.
+
+Now that ecommerce is up and running, I have begun adding ERP features to it. Essentially, the goal with this system is to build something similar to OdooERP. 
 (I know it will take time)
 
 ## The following features have been implemented:
@@ -25,15 +26,15 @@ After Ecommerce is fully implemented, I will begin adding ERP features to it. Es
 
 - *Newsletters* - You can keep your audience coming back using Newsletters. Write a cachy article and send it to your newsletter subscibers. Coming Soon: Grouping newsletter subscibers as contacts.
 
-- *Settings* - You can manage the following from the settings: *Companies*, *Users*, *Theme*, *Slideshows*, *Statuses*. 
+- *Roles* - Manage user roles and permissions. By default, the user with admin role can perform all actions on all models. Other roles can be defined and assigned permissions.
+
+- *Settings* - You can manage the following from the settings: *Companies*, *Users*, *Theme*, *Slideshows*, *Statuses* *Roles*. 
 
 ## The following features are coming soon:
 
 - *Stock Management* - This will allow for effective management of physical goods. 
 
 - *Purchase Management* - This will allow for purchasing and replenishing products when they run out of stock.
-
-- *Roles* - Manage user roles and permissions.
 
 - *Stores and Locations* - Locations will be inside stores. A store may have mutiple locations in it. These locations may contain physical goods.
 

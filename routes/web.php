@@ -101,6 +101,8 @@ Route::middleware(['auth'])->group(function(){
                 Route::get('create', [ThemeController::class, 'create'])->name('admin.theme.create');
     
                 Route::post('store', [ThemeController::class, 'store'])->name('admin.theme.store');
+
+                Route::get('activate/{slug}', [ThemeController::class, 'activate'])->name('admin.theme.activate');
             });
 
             // ROLES
@@ -212,6 +214,10 @@ Route::middleware(['auth'])->group(function(){
             Route::get('settings/roles', [RoleController::class, 'index'])->name('admin.role.index');
 
             Route::get('settings/roles/{slug}', [RoleController::class, 'show'])->name('admin.role.show');
+
+            Route::get('settings/users', [UserController::class, 'index'])->name('admin.user.index');
+
+            Route::get('settings/users/{slug}', [UserController::class, 'show'])->name('admin.user.show');
 
         });
 
