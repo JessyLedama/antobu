@@ -15,8 +15,7 @@ class Order extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'product_ids',
-        'user_id',
+        'product_ids', 'user_id', 'quantity', 'tax_id', 'subtotal'
     ];
 
     // order belongsTo user

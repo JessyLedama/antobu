@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OrderService;
+use App\Models\Tax;
 use Illuminate\Http\Request;
-use App\Services\UserService;
-use App\Services\ProductService;
-use App\Services\TaxService;
 
-class OrderController extends Controller
+class TaxController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $orders = OrderService::orders();
+        $taxes = TaxService::taxes();
 
-        return view('admin.order.index', compact('orders'));
+        return view('admin.tax.index' compact('taxes'));
     }
 
     /**
@@ -25,30 +22,28 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $customers = UserService::users();
-
-        $products = ProductService::products();
-
-        $taxes = TaxService::taxes();
-
-        $orderProducts = [];
-
-        return view('admin.order.create', compact('customers', 'products', 'orderProducts', 'taxes'));
+        return view('admin.tax.create');
     }
-
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['string', 'max:30', 'unique:taxes' 'required'],
+            'amount' => ['string', 'required'],
+        ]);
+
+        $tax = TaxService::store($validated);
+
+        return redirect()->route('admin.tax.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Oder $oder)
+    public function show(Tax $tax)
     {
         //
     }
@@ -56,7 +51,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Oder $oder)
+    public function edit(Tax $tax)
     {
         //
     }
@@ -64,7 +59,7 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Oder $oder)
+    public function update(Request $request, Tax $tax)
     {
         //
     }
@@ -72,7 +67,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Oder $oder)
+    public function destroy(Tax $tax)
     {
         //
     }
