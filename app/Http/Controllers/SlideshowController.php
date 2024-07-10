@@ -46,9 +46,11 @@ class SlideshowController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Slideshow $slideshow)
+    public function show($slug)
     {
-        //
+        $slide = SlideshowService::searchBySlug($slug);
+
+        return view('admin.slide.show', compact('slide'));
     }
 
     /**
@@ -64,9 +66,17 @@ class SlideshowController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Slideshow $slideshow)
+    public function update(Request $request, $slug)
     {
-        //
+        $validated = $request->validate([
+            'name' => ['string'],
+            'image' => ['mimes:jpg,jpeg,png,gif,svg'],
+            'caption' => ['string']
+        ]);
+
+        $slide = SlideshowService::update($validated, $slug);
+
+        return redirect()->route('admin.slide.show', $slide->slug);
     }
 
     /**

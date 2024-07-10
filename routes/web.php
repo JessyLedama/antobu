@@ -146,6 +146,8 @@ Route::middleware(['auth'])->group(function(){
             Route::prefix('slides')->group(function(){
         
                 Route::get('edit/{slug}', [SlideshowController::class, 'edit'])->name('admin.slide.edit');
+
+                Route::post('update/{slug}', [SlideshowController::class, 'update'])->name('admin.slide.update');
             });
 
             // Company Details
@@ -196,6 +198,8 @@ Route::middleware(['auth'])->group(function(){
             Route::get('orders', [OrderController::class, 'index'])->name('admin.order.index');
 
             Route::get('slideshows', [SlideshowController::class, 'index'])->name('admin.slide.index');
+
+            Route::get('slideshows/{slug}', [SlideshowController::class, 'show'])->name('admin.slide.show');
 
             Route::get('newsletters', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
 

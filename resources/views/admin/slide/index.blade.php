@@ -100,7 +100,7 @@
               </td>
 
               <td>
-                {{ $slide->caption }}
+                {!! $slide->caption !!}
               </td>
 
               <td>

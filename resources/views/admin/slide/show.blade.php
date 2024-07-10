@@ -5,12 +5,12 @@
 @section('content')
 
 @include('admin.sidebar')
+
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-  
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
     <h1 class="h2">
-      New Slideshow
+      Slideshows
     </h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -54,60 +54,67 @@
         </li>
         
         <li class="breadcrumb-item active" aria-current="page">
-          Create Slideshow
+          {{ $slide->name }}
         </li>
       </ol>
     </nav>
   </div>
 
   <div class="btn-container">
-    <a class="new-btn theme-secondary-btn" href="{{ route('admin.slide.index') }}">
-      All Slides
+    <a class="new-btn" href="{{ route('admin.slide.create') }}">
+      New
+    </a>
+
+    <a class="new-btn" href="{{ route('admin.slide.edit', $slide->slug) }}">
+      Edit
     </a>
   </div>
 
-  <form action="{{ route('admin.slide.store') }}" method="post" enctype="multipart/form-data">
-    @csrf
-    
-    <div class="row">
-      <div class="mb-3 col-8">
-        <label for="name" class="form-label theme-secondary-color">
-          Slideshow Title
-        </label>
+  <div>
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+  </div>
 
-        <input name="name" type="text" class="form-control theme-input-form" id="name" placeholder="Example Headline" required>
-      </div>
+  <div class="table-responsive small dash-table">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">
+            Favicon
+          </th>
+          
+          <th scope="col">
+            Name
+          </th>
+          
+          <th scope="col">
+            Status
+          </th>
+        </tr>
+      </thead>
 
-      <div class="mb-3 col-4">
-        <label for="image" class="form-label theme-secondary-color">
-          Slideshow Image
-        </label>
+      <tbody>
+          <tr>
+            <td>
+              <img class="product-img" src="{{ asset('storage/'.$slide->image) }}" alt="">
+            </td>
 
-        <input name="image" type="file" class="form-control theme-input-form" id="image" required>
-      </div>
+            <td class="product-text">
+              <span >
+                {{ ucfirst($slide->name) }}
+              </span>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <div class="mb-3 col-12">
-        <label for="caption" class="form-label theme-secondary-color">
-          Caption
-        </label>
-
-        <textarea name="caption" class="form-control theme-input-form" id="caption" rows="3" required></textarea>
-      </div>
-    </div>
-
-    <input type="submit" value="Save" class="btn theme-primary-btn">
-  </form>
 </main>
-
-
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-
-<script>
-	
-  ClassicEditor
-        .create( document.querySelector( '#caption' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-</script>
 @endsection

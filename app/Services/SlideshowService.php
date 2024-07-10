@@ -45,4 +45,21 @@ class SlideshowService
 
         return $slide;
     }
+
+    /**
+     *  Update an existing slideshow
+     *  Returns the updated slideshow.
+     */
+    public static function update($validated, $slug)
+    {
+        $slide = self::searchBySlug($slug);
+
+        $validated['slug'] = SlugService::make($validated['name']);
+
+        $slide->update($validated);
+
+        session()->flash('success', 'Slideshow updated.');
+
+        return $slide;
+    }
 }

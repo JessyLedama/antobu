@@ -65,37 +65,50 @@
     </a>
   </div>
   
-  <form action="{{ route('admin.slide.store') }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('admin.slide.update', $slide->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3">
-      <label for="slideshow-title" class="form-label theme-primary-color">
-        Slideshow Title
-      </label>
+    <div class="row">
+      <div class="mb-3 col-8">
+        <label for="slideshow-title" class="form-label theme-primary-color">
+          Slideshow Title
+        </label>
 
-      <input name="name" type="text" class="form-control theme-secondary-color" id="title" placeholder="Example Headline" value="{{ $slide->name }}" required>
-    </div>
+        <input name="name" type="text" class="form-control theme-secondary-color theme-input-form" id="title" placeholder="Example Headline" value="{{ $slide->name }}" required>
+      </div>
 
-    <div class="mb-3">
-      <label for="slideshow-image" class="form-label theme-primary-color">
-        Slideshow Image
-      </label>
+      <div class="mb-3 col-4">
+        <label for="slideshow-image" class="form-label theme-primary-color">
+          Slideshow Image
+        </label>
 
-      <input name="image" type="file" class="form-control" id="slideshowImage" required>
-      <img src="{{ asset('storage/'.$slide->image) }}" class="current-img" alt="">
-      <small class="theme-secondary-color">
-        Current image
-      </small>
-    </div>
+        <input name="image" type="file" class="form-control theme-input-form" id="slideshowImage">
+        <img src="{{ asset('storage/'.$slide->image) }}" class="current-img" alt="">
+        <small class="theme-secondary-color">
+          Current image
+        </small>
+      </div>
 
-    <div class="mb-3">
-      <label for="caption" class="form-label theme-primary-color">
-        Caption
-      </label>
+      <div class="mb-3 col-12">
+        <label for="caption" class="form-label theme-primary-color">
+          Caption
+        </label>
 
-      <textarea name="caption" class="form-control theme-secondary-color" id="caption" rows="3" required>{{ $slide->caption }}</textarea>
+        <textarea name="caption" class="form-control theme-secondary-color" id="caption" rows="3" required>{{ $slide->caption }}</textarea>
+      </div>
     </div>
 
     <input type="submit" value="Update" class="btn theme-primary-btn">
   </form>
 </main>
+
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+<script>
+	
+  ClassicEditor
+        .create( document.querySelector( '#caption' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
