@@ -114,6 +114,14 @@ Route::middleware(['auth'])->group(function(){
     
                 Route::get('activate/{slug}', [RoleController::class, 'activate'])->name('admin.role.activate');
             });
+
+            // ORDERS
+            Route::prefix('orders')->group(function(){
+                
+                Route::get('create', [OrderController::class, 'create'])->name('admin.order.create');
+    
+                Route::post('store', [OrderController::class, 'store'])->name('admin.order.store');
+            });
         });
 
         // EDIT GROUP
@@ -121,7 +129,7 @@ Route::middleware(['auth'])->group(function(){
 
             // PRODUCTS
             Route::prefix('products')->group(function(){
-                Route::get('edit', [ProductController::class, 'edit'])->name('admin.product.edit');
+                Route::get('edit/{slug}', [ProductController::class, 'edit'])->name('admin.product.edit');
     
                 Route::post('update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
         
@@ -181,6 +189,14 @@ Route::middleware(['auth'])->group(function(){
     
                 Route::post('update/{slug}', [RoleController::class, 'update'])->name('admin.role.update');
             });
+
+            // ORDERS
+            Route::prefix('orders')->group(function(){
+                
+                Route::get('edit/{slug}', [OrderController::class, 'edit'])->name('admin.order.edit');
+    
+                Route::post('update/{slug}', [OrderController::class, 'update'])->name('admin.order.update');
+            });
         });
 
         // DELETE GROUP
@@ -194,6 +210,8 @@ Route::middleware(['auth'])->group(function(){
             Route::get('product-categories', [ProductCategoryController::class, 'index'])->name('admin.productCategory.index');
 
             Route::get('products', [ProductController::class, 'index'])->name('product.index');
+
+            Route::get('products/{slug}', [ProductController::class, 'show'])->name('admin.product.show');
 
             Route::get('orders', [OrderController::class, 'index'])->name('admin.order.index');
 

@@ -54,7 +54,7 @@ class ProductService
     // search product by slug
     public static function searchBySlug($slug)
     {
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->with(['category'])->first();
 
         return $product;
     }

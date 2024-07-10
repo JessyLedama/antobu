@@ -59,17 +59,23 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show($slug)
     {
-        //
+        $product = ProductService::searchBySlug($slug);
+
+        return view('admin.product.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($slug)
     {
-        //
+        $product = ProductService::searchBySlug($slug);
+
+        $categories = ProductCategoryService::categories();
+
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     /**

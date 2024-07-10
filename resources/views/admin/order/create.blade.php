@@ -9,7 +9,7 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
-    <h1 class="h2">
+    <h1 class="h2 theme-primary-color">
       Orders
     </h1>
     
@@ -32,12 +32,12 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.product.index') }}">
+    <a class="new-btn theme-" href="{{ route('admin.product.index') }}">
       All Products
     </a>
   </div>
 
-  <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('admin.order.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">

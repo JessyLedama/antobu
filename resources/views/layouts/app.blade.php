@@ -74,6 +74,7 @@
                 .theme-secondary-btn{
                     background-color:{{ $theme->secondary_button ??  $theme->secondary_color }} !important;
                     color:#fff;
+                    border:1px solid {{ $theme->primary_button ?? $theme->primary_color }}
                 }
 
                 .theme-secondary-btn:hover{

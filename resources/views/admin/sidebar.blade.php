@@ -59,8 +59,8 @@
 
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
-            <li class="nav-item">
-              <a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center gap-2 active" aria-current="page">
+            <li class="nav-item theme-primary-color">
+              <a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('dashboard') ? 'active' : '' }}" aria-current="page">
                 <svg class="bi">
                     <use xlink:href="#house-fill"/>
                 </svg>
@@ -69,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('admin.order.index') }}" class="nav-link d-flex align-items-center gap-2">
+              <a href="{{ route('admin.order.index') }}" class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('admin.order.index') ? 'active' : '' }}">
                 <svg class="bi">
                     <use xlink:href="#file-earmark"/>
                 </svg>
@@ -78,7 +78,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center gap-2">
+              <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('product.index') ? 'active' : '' }}">
                 <svg class="bi">
                     <use xlink:href="#cart"/>
                 </svg>
@@ -86,8 +86,8 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a href="{{ route('admin.productCategory.index') }}" class="nav-link d-flex align-items-center gap-2">
+            <li class="nav-item ">
+              <a href="{{ route('admin.productCategory.index') }}" class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('admin.productCategory.index') ? 'active' : '' }}">
                 <svg class="bi">
                     <use xlink:href="#list"/>
                 </svg>
@@ -96,7 +96,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('admin.newsletter.index') }}" class="nav-link d-flex align-items-center gap-2">
+              <a href="{{ route('admin.newsletter.index') }}" class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('admin.newsletter.index') ? 'active' : '' }}">
                 <svg class="bi">
                     <use xlink:href="#list"/>
                 </svg>
@@ -111,7 +111,7 @@
               </a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="#">
                 <svg class="bi"><use xlink:href="#graph-up"/></svg>
                 Reports
@@ -123,10 +123,10 @@
                 <svg class="bi"><use xlink:href="#puzzle"/></svg>
                 Integrations
               </a>
-            </li>
+            </li> -->
           </ul>
 
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
+          <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
             <span>
                 Saved reports
             </span>
@@ -161,25 +161,16 @@
                 Year-end sale
               </a>
             </li>
-          </ul>
+          </ul> -->
 
           <hr class="my-3">
 
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="{{ route('admin.settings') }}">
+              <a class="nav-link d-flex align-items-center gap-2 theme-primary-color {{ Route::is('admin.settings') ? 'active' : '' }}" href="{{ route('admin.settings') }}">
                 <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
                 Settings
               </a>
-            </li>
-            <li class="nav-item">
-              <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button class="nav-link d-flex align-items-center gap-2">
-                  <svg class="bi"><use xlink:href="#door-closed"/></svg>
-                    Sign out
-                  </button>
-              </form>
             </li>
           </ul>
         </div>

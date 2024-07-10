@@ -85,16 +85,34 @@
                 </button>
 
                 <ul class="dropdown-menu">
-                    <li><h6 class="dropdown-header">Dropdown header</h6></li>
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <!-- <li><h6 class="dropdown-header">Dropdown header</h6></li> -->
+                    <li>
+                        <a class="dropdown-item theme-primary-color {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item theme-primary-color {{ Route::is('admin.order.index') ? 'active' : '' }}" href="{{ route('admin.order.index') }}">
+                            Sales
+                        </a>
+                    </li>
+                    
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    <li>
+                        <a class="dropdown-item theme-primary-color {{ Route::is('admin.settings') ? 'active' : '' }}" href="{{ route('admin.settings') }}">
+                            <svg class="bi">
+                                <use xlink:href="#gear-wide-connected"/>
+                            </svg>
+                            Settings
+                        </a>
+                    </li>
                 </ul>
                    </div>
         @endif
- <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
+        
+        <!-- the company name is taken from DB. To change the name displayed, change the company name from the Settings. -->
         @if(isset($company))
             @if(isset($theme))
                 @if($theme->navigation_brand == 'name')
@@ -170,6 +188,17 @@
                             <span class="fa fa-user"></span>
                             Hi  {{ Auth::user()->name }}
                         </a>
+                    </li>
+
+
+                    <li class="nav-item float-right theme-secondary-btn">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button class="nav-link d-flex align-items-center gap-2">
+                            <svg class="bi"><use xlink:href="#door-closed"/></svg>
+                                Sign out
+                            </button>
+                        </form>
                     </li>
                 @else
                     <li class="nav-item float-right">

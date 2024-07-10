@@ -9,7 +9,7 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
-    <h1 class="h2">
+    <h1 class="h2 theme-primary-color">
       Dashboard
     </h1>
   </div>
@@ -18,7 +18,7 @@
   <div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
-        <li class="breadcrumb-item active" aria-current="page">
+        <li class="breadcrumb-item theme-secondary-color" aria-current="page">
           Dashboard
         </li>
       </ol>
@@ -31,7 +31,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.order.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Orders
 
                       <span class="float-right">
@@ -47,7 +47,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('product.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Products
 
                       <span class="float-right">
@@ -63,7 +63,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.productCategory.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Product Categories
 
                       <span class="float-right">
@@ -78,7 +78,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">
+              <h5 class="card-title theme-primary-color">
                   Product Categories
 
                   <span class="float-right">
@@ -92,7 +92,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">
+              <h5 class="card-title theme-primary-color">
                   Product Categories
 
                   <span class="float-right">
@@ -106,7 +106,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">
+              <h5 class="card-title theme-primary-color">
                   Product Categories
 
                   <span class="float-right">

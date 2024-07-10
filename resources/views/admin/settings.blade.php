@@ -9,7 +9,7 @@
   <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       
-      <h1 class="h2">
+      <h1 class="h2 theme-primary-color">
         Settings
       </h1>
     </div>
@@ -19,12 +19,12 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
           <li class="breadcrumb-item">
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('dashboard') }}" class="theme-primary-color">
               Dashboard
             </a>
           </li>
           
-          <li class="breadcrumb-item active" aria-current="page">
+          <li class="breadcrumb-item active theme-secondary-color" aria-current="page">
             Settings
           </li>
         </ol>
@@ -37,7 +37,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.company.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Companies
 
                       <span class="float-right">
@@ -53,7 +53,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.user.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Users
 
                       <span class="float-right">
@@ -69,7 +69,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.theme.index') }}">
-                  <h5 class="card-title">
+                  <h5 class="card-title theme-primary-color">
                       Themes
 
                       <span class="float-right">
@@ -85,7 +85,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.slide.index') }}">
-                <h5 class="card-title">
+                <h5 class="card-title theme-primary-color">
                     Slideshows
 
                     <span class="float-right">
@@ -101,7 +101,7 @@
           <div class="card">
             <div class="card-body">
               <a href="{{ route('admin.status.index') }}">
-                <h5 class="card-title">
+                <h5 class="card-title theme-primary-color">
                     Status
 
                     <span class="float-right">
@@ -116,7 +116,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">
+              <h5 class="card-title theme-primary-color">
                   Roles & Permissions
 
                   <span class="float-right">

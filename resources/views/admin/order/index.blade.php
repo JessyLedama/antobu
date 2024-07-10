@@ -9,7 +9,7 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
-    <h1 class="h2">
+    <h1 class="h2 theme-primary-color">
       Orders
     </h1>
     
@@ -36,16 +36,22 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
         <li class="breadcrumb-item">
-          <a href="{{ route('dashboard') }}">
+          <a href="{{ route('dashboard') }}" class="theme-primary-color">
             Dashboard
           </a>
         </li>
         
-        <li class="breadcrumb-item active" aria-current="page">
+        <li class="breadcrumb-item theme-secondary-color" aria-current="page">
           Orders
         </li>
       </ol>
     </nav>
+  </div>
+
+  <div class="btn-container">
+    <a class="new-btn theme-secondary-btn" href="{{ route('admin.order.create') }}">
+      New Order
+    </a>
   </div>
 
   <div class="table-responsive small dash-table">

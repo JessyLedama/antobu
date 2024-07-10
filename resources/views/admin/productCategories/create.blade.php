@@ -8,17 +8,17 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     
-    <h1 class="h2">
-      Products
+    <h1 class="h2 theme-primary-color">
+      Product Categories
     </h1>
     
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <a href="{{ route('admin.product.xlsx') }}" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.product.xlsx') }}" class="btn btn-sm btn-outline-secondary theme-primary-color">
           XLSX
         </a>
 
-        <a href="{{ route('admin.product.csv') }}" class="btn btn-sm btn-outline-secondary">
+        <a href="{{ route('admin.product.csv') }}" class="btn btn-sm btn-outline-secondary theme-primary-color">
           CSV
         </a>
       </div>
@@ -35,18 +35,18 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
         <li class="breadcrumb-item">
-          <a href="{{ route('dashboard') }}">
+          <a href="{{ route('dashboard') }}" class="theme-primary-color">
             Dashboard
           </a>
         </li>
 
         <li class="breadcrumb-item">
-          <a href="{{ route('admin.productCategory.index') }}">
+          <a href="{{ route('admin.productCategory.index') }}" class="theme-primary-color">
             Product Categories
           </a>
         </li>
         
-        <li class="breadcrumb-item active" aria-current="page">
+        <li class="breadcrumb-item theme-secondary-color" aria-current="page">
           Create Product Category
         </li>
       </ol>
@@ -54,22 +54,22 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.productCategory.index') }}">
+    <a class="new-btn theme-secondary-btn" href="{{ route('admin.productCategory.index') }}">
       All Product Categories
     </a>
   </div>
 
   <form action="{{ route('admin.productCategory.store') }}" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3">
-      <label for="name" class="form-label">
+    <div class="mb-3 col-8">
+      <label for="name" class="form-label theme-secondary-color">
         Name
       </label>
 
-      <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter product category name" required>
+      <input name="name" type="text" class="form-control theme-input-form" id="exampleFormControlInput1" placeholder="Enter product category name" required>
     </div>
 
-    <input type="submit" value="Save" class="new-btn">
+    <input type="submit" value="Save" class="new-btn theme-primary-btn">
   </form>
 </main>
 @endsection

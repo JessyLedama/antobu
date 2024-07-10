@@ -46,9 +46,15 @@
             Products
           </a>
         </li>
+
+        <li class="breadcrumb-item">
+          <a href="{{ route('admin.product.show', $product->slug) }}" class="theme-primary-color">
+            {{ ucwords($product->name) }}
+          </a>
+        </li>
         
         <li class="breadcrumb-item theme-secondary-color" aria-current="page">
-          Create Product
+          Edit Product ({{ $product->name }})
         </li>
       </ol>
     </nav>
@@ -125,7 +131,7 @@
       </div>
     </div>
 
-    <input type="submit" value="Save" class="new-btn theme-primary-btn">
+    <input type="submit" value="Update" class="new-btn theme-primary-btn">
   </form>
 </main>
 @endsection
