@@ -42,7 +42,7 @@
         </li>
 
         <li class="breadcrumb-item">
-          <a href="{{ route('admin.product.index') }}">
+          <a href="{{ route('product.index') }}">
             Products
           </a>
         </li>
@@ -55,7 +55,7 @@
   </div>
 
   <div class="btn-container">
-    <a class="new-btn" href="{{ route('admin.product.index') }}">
+    <a class="new-btn" href="{{ route('product.index') }}">
       All Products
     </a>
   </div>

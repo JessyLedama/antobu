@@ -46,7 +46,7 @@
         <div class="col">
           <div class="card">
             <div class="card-body">
-              <a href="{{ route('admin.product.index') }}">
+              <a href="{{ route('product.index') }}">
                   <h5 class="card-title">
                       Products
 

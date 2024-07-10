@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Services\RoleService;
 use App\Models\Permission;
+use App\Models\Role;
 use App\Services\SlugService;
 use App\Services\StatusService;
 use App\Services\PermissionService;
@@ -24,17 +25,9 @@ class RolesAndPermissionsSeeder extends Seeder
         if($roles->isEmpty())
         {
             $roleDatas = [
-                [
-                    'name' => 'admin',
-                ],
-    
-                [
-                    'name' => 'internal user',
-                ],
-    
-                [
-                    'name' => 'portal user',
-                ]
+                ['name' => 'admin'],
+                ['name' => 'internal user'],
+                ['name' => 'portal user']
             ];
 
             foreach($roleDatas as $validated)

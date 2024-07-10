@@ -78,7 +78,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="{{ route('admin.product.index') }}" class="nav-link d-flex align-items-center gap-2">
+              <a href="{{ route('product.index') }}" class="nav-link d-flex align-items-center gap-2">
                 <svg class="bi">
                     <use xlink:href="#cart"/>
                 </svg>
