@@ -42,12 +42,24 @@ Now that ecommerce is up and running, I have begun adding ERP features to it. Es
 
 ## Getting Started
 
-To get started with this, you can run ```composer create project jessyledama/laravel-ecommerce```
+1. To get started with this, you can clone this repository or run ```composer create project jessyledama/laravel-ecommerce```
 
-Once the whole project has been downloaded, you may navigate into the project and run ``` php artisan migrate ``` to create the database tables, then run ``` php artisan db:seed ``` to initialise some test data. 
+2. Once the whole project has been downloaded, ensure that you have a *.env* file. If you do not, copy the *.env.example* and rename it to *.env*. 
+3. Run ``` php artisan key:generate ``` to generate a new key for your app.
 
-Then you may run ``` php artisan serve ``` to access the system on your browser.
+4. You may navigate into the project and run ``` php artisan migrate ``` to create the database tables. 
+5. Run ``` php artisan db:seed ``` to initialise some test data. 
 
+6. Run ``` php artisan serve ``` to access the system on your browser. 
+
+## Setting Up Your Company
+Once you can access the system in the browser, log in then navigate to *Settings > Company* and set up company details. Here, you can configure the *Name*, *Address*, *Phone*, *Website*, *Email*, *tax_id*, *Logo* and *Country*.
+
+## Setting Up Your Theme
+Navigate to *Settings > Theme*, to set up your theme. In the theme, you fill up the following data: *Theme name*, *Favicon*, *Primary Color*, *Secondary Color*, *Title Font*, *Content Font*, *Header Color*, *Footer Color*, *Primary Button*, *Secondary Button* and *Navigation Brand*. In the *Navigation Brand*, you choose between the *Company Name* and *Logo* as what will be displayed in the navigation. 
+
+## Dashboard
+You may then go to *Dashboard > Products* to create your products.
 ## Contributing
 
 Thank you for considering contributing to this project! We follow a similar contribution guide as the Laravel framework. The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
@@ -61,5 +73,4 @@ In order to ensure that the Laravel community is welcoming to all, please review
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
-
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
