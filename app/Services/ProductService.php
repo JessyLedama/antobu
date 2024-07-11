@@ -100,7 +100,7 @@ class ProductService
 
         if(isset($category))
         {
-            $products = Product::where('product_category_id', $category->id)->random(5)->get();
+            $products = Product::where('product_category_id', $category)->inRandomOrder()->take(5)->get();
 
             return $products;
         }

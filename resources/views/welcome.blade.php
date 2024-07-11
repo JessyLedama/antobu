@@ -13,19 +13,19 @@
                 @endforeach
             </div>
             
-            <div class="carousel-inner">
+            <div class="carousel-inner theme-content-font">
                 @foreach($slides as $index => $slide)
                     <div class="carousel-item {{$index === 0 ? 'active' : ''}}">
                         <img class="bd-placeholder-img" src="{{ asset('storage/'.$slide->image) }}" width="100%" height="100%" alt="">
 
                         <div class="container">
                             <div class="carousel-caption text-start">
-                                <h1 class="theme-title">
+                                <h1 class="theme-title theme-title-font">
                                     {{ ucfirst($slide->name) }}
                                 </h1>
                                 
                                 <p class="opacity-75">
-                                    {{ $slide->caption }}
+                                    {!! $slide->caption !!}
                                 </p>
                                 
                                 <p>
@@ -55,7 +55,7 @@
         </div>
 
         <!-- PRODUCTS -->
-        <div class="album py-5 bg-body-tertiary">
+        <div class="album py-5 bg-body-tertiary theme-content-font">
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                     @foreach($products as $product)
@@ -66,20 +66,20 @@
 
                                     <div class="card-body">
 
-                                        <h3 class="card-text theme-secondary-color">
+                                        <h3 class="card-text theme-secondary-color theme-content-font">
                                             {{ ucwords($product->name) }}
                                         </h3>
 
-                                        <p class="card-text">
-                                            {{ ucfirst($product->description) }}
+                                        <p class="card-text theme-content-font">
+                                            {!! ucfirst($product->description) !!}
                                         </p>
                                     </div>
 
                                 </a>
                                         
-                                <div class="card-body">
+                                <div class="card-body theme-content-font">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-body-secondary theme-primary-color">
+                                        <small class="text-body-secondary theme-primary-color theme-content-font">
                                             KSh. {{ $product->price }}
                                         </small>
 

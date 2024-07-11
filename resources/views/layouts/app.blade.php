@@ -24,6 +24,17 @@
             </title>
         @endif
 
+        @if(isset($theme->title_font))
+            <link href="https://fonts.googleapis.com/css2?family={{ ucfirst($theme->title_font) }}&display=swap" rel="stylesheet">
+
+        @endif
+
+        @if(isset($theme->content_font))
+            <link href="https://fonts.googleapis.com/css2?family={{ ucfirst($theme->content_font) }}&display=swap" rel="stylesheet">
+
+        @endif
+
+
         <!-- Fonts -->
         <!-- <link rel="preconnect" href="https://fonts.bunny.net"> -->
         <!-- <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> -->
@@ -58,6 +69,8 @@
 
                 .theme-title{
                     color:{{ $theme->primary_color }} !important;
+                    font-size:5em;
+                    font-weight:bold;
                 }
 
                 .theme-primary-btn{
@@ -96,6 +109,14 @@
                     border-right: none;
                     border-top: none;
                     border-bottom: 2px solid {{ $theme->secondary_color }};
+                }
+
+                .theme-title-font{
+                    font-family: {{ $theme->title_font }}
+                }
+
+                .theme-content-font{
+                    font-family: {{ $theme->content_font }}
                 }
             </style>
         @endif

@@ -23,8 +23,9 @@ class PagesController extends Controller
      */
     public function showProduct($slug)
     {
+        
         $product = ProductService::searchBySlug($slug);
-
+    
         $category = $product->category_id;
 
         $similarProducts = ProductService::similar($product);
