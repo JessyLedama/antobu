@@ -104,6 +104,14 @@
                     color:{{ $theme->secondary_color }} !important;
                 }
 
+                .theme-primary-bg{
+                    background-color: {{ $theme->primary_color }} !important;
+                }
+
+                .theme-secondary-bg{
+                    background-color: {{ $theme->secondary_color }} !important;
+                }
+
                 .theme-input-form{
                     border-left: none;
                     border-right: none;
