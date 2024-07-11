@@ -114,13 +114,23 @@ class ProductService
      *  update an existing product
      *  return the updated product
      */
-    public static function update($validated, $id)
+    public static function update($validated, $slug)
     {
-        $product = self::find($id);
+        $product = self::searchBySlug($slug);
+
+        if(isset($validated['image']))
+        {
+            $image = $validated['image']->store('productImages', ['disk' => 'public']);
+            $validated['image'] = $image;
+        }
+
+        if(isset($validated['digital_asset']))
+        {
+            $image = $validated['image']->store('digitalAssets', ['disk' => 'public']);
+            $validated['digital_asset'] = $image;
+        }
 
         $product->update($validated);
-
-        $product = $product->save();
 
         return $product;
     }

@@ -81,9 +81,20 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //         
+        $validated = $request->validate([
+            'name' => ['string'],
+            'image' => ['mimes:jpg,jpeg,png,gif,svg'],
+            'product_category_id' => ['required'],
+            'price' => ['string'],
+            'digital_asset' => ['mimes:jpg,jpeg,png,gif,svg,zip,rar'],
+            'description' => ['string'],
+        ]);
+
+        $product = ProductService::update($validated, $slug);
+
+        return redirect()->route('admin.product.show', $slug);
     }
 
     /**

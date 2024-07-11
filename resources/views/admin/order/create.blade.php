@@ -102,9 +102,9 @@
                               Product
                             </th>
 
-                            <th>
+                            <!-- <th>
                               Description
-                            </th>
+                            </th> -->
 
                             <th>
                               Quantity
@@ -124,6 +124,7 @@
                           </tr>
                         </thead>
                         @foreach($products as $product)
+                          
                           <tbody>
                             <tr>
                               <div class="bd-example-snippet bd-code-snippet">
@@ -140,15 +141,15 @@
                                       </li>
                                     </td>
 
-                                    <td>
+                                    <!-- <td>
                                       <li class="list-group-item">
                                         <a href="{{ route('admin.product.show', $product->slug) }}">
                                           <span>
-                                            {{ ucwords($product->description) }}
+                                            {!! ucfirst($product->description) !!}
                                           </span>
                                         </a>
                                       </li>
-                                    </td>
+                                    </td> -->
 
                                     <td>
                                       <li class="list-group-item">
@@ -189,6 +190,7 @@
                                     <td>
                                       <li class="list-group-item">
                                         <a href="{{ route('admin.product.show', $product->slug) }}">
+                                        
                                           <span>
                                             {{ ucwords($product->subtotal) }}
                                           </span>

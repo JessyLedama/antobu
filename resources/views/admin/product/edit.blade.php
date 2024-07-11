@@ -76,7 +76,7 @@
       </div>
   @endif
 
-  <form action="{{ route('admin.product.store') }}" method="post" enctype="multipart/form-data">
+  <form action="{{ route('admin.product.update', $product->slug) }}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
@@ -85,7 +85,7 @@
           Product Name
         </label>
 
-        <input name="name" type="text" class="form-control theme-input-form" id="" placeholder="Enter Product Name" required>
+        <input name="name" type="text" class="form-control theme-input-form" id="" placeholder="Enter Product Name" value="{{ $product->name }}" required>
       </div>
 
       <div class="mb-3 col-4">
@@ -93,7 +93,9 @@
           Product Image
         </label>
 
-        <input name="image" type="file" class="form-control theme-input-form" id="" required>
+        <input name="image" type="file" class="form-control theme-input-form" id="">
+        <img src="{{ asset('storage/'.$product->image) }}" alt="" class="current-img">
+        <small> Current Image </small>
       </div>
 
       <div class="mb-3 col-4">
@@ -101,10 +103,16 @@
           Product Category
         </label>
 
-        <select name="product_category_id" id="" class="form-control theme-input-form" required>
-          <option value="">
-            Select a category
-          </option>
+        <select name="product_category_id" id="" class="form-control theme-input-form">
+          @if(isset($product->category->name))
+            <option value="{{ $product->category->slug }}">
+              {{ ucwords($product->category->name) }}
+            </option>
+          @else
+            <option value="">
+              Select a category
+            </option>
+          @endif
 
           @foreach($categories as $category)
             <option value="{{ $category->id }}">
@@ -119,7 +127,7 @@
           Product Price
         </label>
 
-        <input name="price" type="text" class="form-control theme-input-form" id="" placeholder="Enter Product Price" required>
+        <input name="price" type="text" class="form-control theme-input-form" id="" placeholder="Enter Product Price" value="{{ $product->price }}" required>
       </div>
 
       <div class="mb-3 col-4">
@@ -129,9 +137,28 @@
 
         <input name="digital_asset" type="file" class="form-control theme-input-form" id="">
       </div>
+
+      <div class="mb-3 col-12">
+        <label for="description" class="form-label theme-secondary-color">
+          Product Description
+        </label>
+
+        <textarea name="description" id="description">{{ $product->description }}</textarea>
+      </div>
     </div>
 
     <input type="submit" value="Update" class="new-btn theme-primary-btn">
   </form>
 </main>
+
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+<script>
+	
+  ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection
