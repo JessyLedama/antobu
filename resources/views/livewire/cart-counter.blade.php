@@ -1,10 +1,10 @@
 <div style="text-align: left">
     <!-- <span> Quantity: </span> -->
-    <button class="cart-button" wire:click="decrement({{ $productId }})"> - </button>
+    <button class="cart-button theme-primary-color" wire:click="decrement({{ $productId }})"> - </button>
 
-    <span>{{ $count }}</span>
+    <span class="theme-primary-color">{{ $count }}</span>
 
-    <button class="cart-button" wire:click="increment({{ $productId }})">+</button> <br>
+    <button class="cart-button theme-primary-color" wire:click="increment({{ $productId }})">+</button> <br>
 <!-- 
     <span>
         Subtotal: {{ $subtotal }}

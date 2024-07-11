@@ -9,13 +9,13 @@
                     <td class="p-4">
                         <div class="media align-items-center">
                             
-                            <a href="#" class="d-block text-dark">
+                            <a href="{{ route('product.show', $item['slug']) }}" class="d-block text-dark theme-primary-color">
                                 {{ $item['name'] }} 
                             </a>
                         </div>
                     </td>
 
-                    <td class="text-right font-weight-semibold align-middle p-4">
+                    <td class="text-right font-weight-semibold align-middle p-4 theme-primary-color">
                         {{ $item['price'] }} 
                     </td>
                     
@@ -23,7 +23,7 @@
                         <livewire:cart-counter :productId="$item['id']" :key="$item['id']">
                     </td>
                     
-                    <td class="text-right font-weight-semibold align-middle p-4">
+                    <td class="text-right font-weight-semibold align-middle p-4 theme-primary-color">
                         {{ number_format($item['price'] * $item['quantity']), 2}}
                     </td>
                     

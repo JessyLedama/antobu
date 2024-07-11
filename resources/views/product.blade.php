@@ -7,7 +7,7 @@
 
 <!-- content -->
 <section class="py-5">
-  <div class="container">
+  <div class="container theme-content-font">
     <div class="row gx-5">
         <aside class="col-lg-6">
             <div class="border rounded-4 mb-3 d-flex justify-content-center">
@@ -59,11 +59,11 @@
             <!-- gallery-wrap .end// -->
         </aside>
 
-        <main class="col-lg-6">
+        <main class="col-lg-6 theme-content-font">
             <div class="ps-lg-3">
-                <h4 class="title text-dark">
+                <h1 class="title text-dark theme-title-font">
                     {{ ucfirst($product->name) }}
-                </h4>
+                </h1>
 
                 <div class="d-flex flex-row my-3">
                     <div class="text-warning mb-1 me-2">
@@ -238,7 +238,7 @@
 </section>
 <!-- content -->
 
-<section class="bg-light border-top py-4">
+<section class="bg-light border-top py-4 theme-content-font">
   <div class="container">
     <div class="row gx-4">
       <div class="col-lg-8 mb-4">
