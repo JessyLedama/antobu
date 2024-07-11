@@ -42,8 +42,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('add-to-wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
 
     Route::prefix('admin')->group(function(){
-    
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         // CREATE GROUP
         Route::middleware('permission:create-model')->group(function(){
@@ -207,6 +205,8 @@ Route::middleware(['auth'])->group(function(){
         // VIEW GROUP
         Route::middleware('permission:view-model')->group(function(){
             
+            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
             Route::get('product-categories', [ProductCategoryController::class, 'index'])->name('admin.productCategory.index');
 
             Route::get('products', [ProductController::class, 'index'])->name('product.index');
