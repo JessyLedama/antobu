@@ -1,4 +1,4 @@
-## About Laravel Ecommerce
+## About Antobu
 
 At this time, this project is a complete ecommerce application built with Laravel. When you run this application, you can configure a company's name, logo, primary color, secondary color, whether on the navbar you want the logo or the company logo, and more configurations in the settings.
 

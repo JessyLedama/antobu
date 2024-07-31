@@ -110,3 +110,7 @@
 .products-list{
   margin-top: 1rem !important;
 }
+
+.admin-product-img{
+  max-width:100%;
+}

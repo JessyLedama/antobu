@@ -54,67 +54,28 @@
     </a>
   </div>
 
-  <div class="table-responsive small dash-table">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">
-            #
-          </th>
+  <!-- PRODUCTS -->
+  <div class="album py-5 bg-body-tertiary theme-content-font">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            @foreach($products as $product)
+                <div class="col">
+                    <div class="card shadow-sm">
+                      <a href="{{ route('admin.product.show', $product->slug) }}">  
+                        <img src="{{ asset('/storage/'.$product->image) }}" alt="" class="admin-product-img">
 
-          <th scope="col">
-            Image
-          </th>
-          
-          <th scope="col">
-            Name
-          </th>
-          
-          <th scope="col">
-            Price
-          </th>
-          
-          <th scope="col">
-            Action
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        @foreach($products as $key => $product)
-          <tr>
-            <td>
-              {{ $key + 1 }}
-            </td>
-
-            <td>
-              <img class="product-img" src="{{ asset('storage/'.$product->image) }}" alt="">
-            </td>
-
-            <td class="product-text">
-              <span >
-                {{ ucfirst($product->name) }}
-              </span>
-            </td>
-
-            <td>
-              {{ $product->price }}
-            </td>
-
-            <td>
-              <a href="{{ route('admin.product.edit', $product->slug) }}">
-                <span class="fa fa-pencil"></span>
-                Edit
-              </a>
-            </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-
-    <span class="pagination">
-      {{ $products->links() }}
-    </span>
+                        <div class="card-body">
+                          <p class="card-text theme-secondary-color theme-content-font">
+                              {{ ucwords($product->name) }}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
   </div>
 </main>
+
 @endsection
