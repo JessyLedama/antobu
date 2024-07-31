@@ -1,12 +1,14 @@
 ## About Antobu
 
-At this time, this project is a complete ecommerce application built with Laravel. When you run this application, you can configure a company's name, logo, primary color, secondary color, whether on the navbar you want the logo or the company logo, and more configurations in the settings.
+At this time, this project is a complete ecommerce application built with Laravel. When you run this application, you can configure a company's name, logo, primary color, secondary color, whether on the navbar you want the logo or the company logo, and more configurations in the Settings.
 
-This comes from a personal need, first and foremost. I have had to build ecommerce platforms severally, and the process of redoing the same thing with just minimal tweaks triggered me to build this as a scaffold that I can use to quickly build ecommerce apps.
+This comes from a personal need, first and foremost. I have had to build ecommerce platforms severally, and the process of redoing the same thing with just minimal tweaks triggered me to build this app so that I can use to quickly spin up ecommerce apps.
 
-Now that ecommerce is up and running, I have begun adding ERP features to it. Essentially, the goal with this system is to build something similar to OdooERP. 
+Now that ecommerce is up and running, I have begun adding ERP features to it. Essentially, the goal with this system is to build a full modular ERP system. 
 (I know it will take time)
 
+I have introduced Stocks for Products, which also introduces Inventory to the system. 
+The Inventory module will manage all Products, Warehouses, Locations (locations exist inside Warehouses)
 ## The following features have been implemented:
 - *Product Management* - Manage products, including digital assets that are delivered on email. With this, you can manage an ecommerce platform for selling digital assets (such as music, arts etc) and also physical goods (stock management coming soon).
 
@@ -42,7 +44,7 @@ Now that ecommerce is up and running, I have begun adding ERP features to it. Es
 
 ## Getting Started
 
-1. To get started with this, you can clone this repository or run ```composer create project jessyledama/laravel-ecommerce```
+1. To get started with this, you can clone this repository or run ``` composer create project jessyledama/antobu ```
 
 2. Once the whole project has been downloaded, ensure that you have a *.env* file. If you do not, copy the *.env.example* and rename it to *.env*. 
 3. Run ``` php artisan key:generate ``` to generate a new key for your app.
